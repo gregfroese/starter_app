@@ -5,7 +5,8 @@ Feature: Stories
 
 Scenario: Creating a story
   Given status records exist
-  Given I'm on the story index page
+  And a project exists
+  And I'm on that project page
   When I click "New Story"
   And I fill in the story form
   And I click "Save Story"

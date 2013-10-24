@@ -1,0 +1,17 @@
+%h1 Listing stories
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @stories.each do |story|
+      %tr
+        %td= story.goal
+        %td= story.stakeholder
+        %td= link_to 'Edit Story', edit_project_story_path(@project, story)
+%br
+= link_to 'New Story', new_project_story_path(@project)

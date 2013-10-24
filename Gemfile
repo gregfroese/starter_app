@@ -16,6 +16,8 @@ gem "haml-rails"
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
   gem 'jasminerice', git: 'https://github.com/bradphelan/jasminerice.git'
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'debugger'
 end
 
