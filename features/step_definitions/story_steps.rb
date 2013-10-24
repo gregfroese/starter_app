@@ -36,7 +36,6 @@ Given(/^a story exists$/) do
   )
 end
 
-
 Then(/^I see story in the edit page$/) do
   visit edit_story_url @story
 end
@@ -45,7 +44,15 @@ Then(/^I change the "(.*?)" field to "(.*?)"$/) do |field, value|
   fill_in field, with: value
 end
 
-Then(/^I see the updated story in the story list$/) do
-  visit stories_url
-  page.should have_content "changed"
+Then(/^I select "(.*?)" for "(.*?)"$/) do |value, field|
+  select(value, :from => field)
+end
+
+Then(/^I see the updated values in the edit story page$/) do
+  visit edit_story_url @story
+  find_field('story_goal').value.should eq "changed goal"
+  find_field('story_stakeholder').value.should eq "changed stakeholder"
+  find_field('story_behavior').value.should eq "changed behavior"
+  page.should have_content "1"
+  page.should have_content "2"
 end

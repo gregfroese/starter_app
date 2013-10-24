@@ -17,6 +17,7 @@ class StoriesController < ApplicationController
 
   # GET /stories/1/edit
   def edit
+    puts "HERE I AM"
   end
 
   # POST /stories
@@ -33,6 +34,7 @@ class StoriesController < ApplicationController
   # PATCH/PUT /stories/1
   def update
     if @story.update(story_params)
+      puts story_params
       redirect_to @story, notice: 'Story was successfully updated.'
     else
       render action: 'edit'
