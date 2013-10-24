@@ -2,6 +2,11 @@
 
 This app is the initial project you should start with at the Rogue Rails workshop.
 
+## Contributors
+
+Adam Cuppy
+Rob Burns
+
 ## Setup
 
 First ensure you have [Vagrant](http://www.vagrantup.com) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads) installed.
