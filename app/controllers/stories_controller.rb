@@ -2,7 +2,7 @@ class StoriesController < ApplicationController
   before_action :set_story, only: [:show, :edit, :update, :destroy]
 
   def new
-    @story = Story.new
+    @story = Story.new(:project_id => params[:project_id])
   end
 
   def edit

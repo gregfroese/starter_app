@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+	before_action :set_project, :only => [:show]
+
 	def index
 		@projects = Project.all
 	end
@@ -13,7 +15,15 @@ class ProjectsController < ApplicationController
 		redirect_to projects_url
 	end
 
+	def show
+    	@stories = Story.all
+	end
+
 	private
+
+	def set_project
+      @project = Project.find(params[:id])
+    end
 
 	def project_params
 		params.required(:project).permit(:name)

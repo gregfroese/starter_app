@@ -13,5 +13,6 @@ class Story < ActiveRecord::Base
     less_than_or_equal_to: 5
   }
 
+  belongs_to :project
   has_one :status
 end
