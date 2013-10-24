@@ -25,3 +25,27 @@ Given(/^status records exist$/) do
   Status.create(name: "Unstarted")
 end
 
+Given(/^a story exists$/) do
+  @story = Story.create(
+    goal: "goal",
+    stakeholder: "stakeholder",
+    behavior: "behavior",
+    business_value: 1,
+    complexity_value: 1,
+    status_id: 7
+  )
+end
+
+
+Then(/^I see story in the edit page$/) do
+  visit edit_story_url @story
+end
+
+Then(/^I change the "(.*?)" field to "(.*?)"$/) do |field, value|
+  fill_in field, with: value
+end
+
+Then(/^I see the updated story in the story list$/) do
+  visit stories_url
+  page.should have_content "changed"
+end

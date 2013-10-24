@@ -1,14 +1,22 @@
 require 'spec_helper'
 
 describe Story do
+  let(:story) { Story.new }
+  let(:goal) { "goal" }
+
   before(:each) {
-    story = Story.new
-    story.goal = nil
+    story.goal = goal
+    story.stakeholder = "stakeholder"
+    story.behavior = "behavior"
   }
 
   describe "story validation" do
+    let(:goal) { nil }
+
     it "has a goal" do
-      expect(story.goal).to eq("goal")
+      expect {
+        story.valid?.to be_false
+      }
     end
   end
 end

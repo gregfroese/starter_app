@@ -22,16 +22,16 @@
     <%= f.text_field :behavior %><br />
 
     <%= f.label :business_value %>:
-    <%= f.select :business_value, [['0','0'],['1','1'],['2','2'],['3','3'],['4','4'],['5','5']] %>
+    <%= f.select :business_value, 0..5 %>
 
     <%= f.label :complexity_value %>:
-    <%= f.select :complexity_value, [['0','0'],['1','1'],['2','2'],['3','3'],['4','4'],['5','5']] %>
+    <%= f.select :complexity_value, 0..5 %>
 
     <%= f.label :status_id %>:
     <%= f.select :status_id, Status.all.collect {|status| [status.name, status.id]} %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save Story" %>
   </div>
 <% end %>
