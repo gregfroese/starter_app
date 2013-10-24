@@ -8,5 +8,5 @@ Scenario: Creating a story
   Given I'm on the story index page
   When I click "New Story"
   And I fill in the story form
-  And I click "Create Story"
+  And I click "Save Story"
   Then I see the story in the story list
