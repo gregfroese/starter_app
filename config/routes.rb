@@ -1,6 +1,7 @@
 StarterApp::Application.routes.draw do
+  root 'projects#index'
+  resources :projects
   resources :statuses
-
   resources :stories
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -43,7 +44,7 @@ StarterApp::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
