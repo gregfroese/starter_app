@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20131024225930) do
     t.integer  "status_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "project_id",       default: 0
   end
 
 end

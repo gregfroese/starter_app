@@ -13,6 +13,7 @@ class Story < ActiveRecord::Base
     less_than_or_equal_to: 5
   }
 
+  belongs_to :project
   belongs_to :status
   has_many :comments
 end

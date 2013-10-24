@@ -1,60 +1,44 @@
 class StoriesController < ApplicationController
   before_action :set_story, only: [:show, :edit, :update, :destroy]
+  before_action :set_project
 
-  # GET /stories
-  def index
-    @stories = Story.all
-  end
-
-  # GET /stories/1
-  def show
-  end
-
-  # GET /stories/new
   def new
     @story = Story.new
   end
 
-  # GET /stories/1/edit
   def edit
     puts "HERE I AM"
   end
 
-  # POST /stories
   def create
     @story = Story.new(story_params)
 
     if @story.save
-      redirect_to @story, notice: 'Story was successfully created.'
+      redirect_to @project, notice: 'Story was successfully created.'
     else
       render action: 'new'
     end
   end
 
-  # PATCH/PUT /stories/1
   def update
     if @story.update(story_params)
       puts story_params
-      redirect_to @story, notice: 'Story was successfully updated.'
+      redirect_to @project, notice: 'Story was successfully updated.'
     else
       render action: 'edit'
     end
   end
 
-  # DELETE /stories/1
-  def destroy
-    @story.destroy
-    redirect_to stories_url, notice: 'Story was successfully destroyed.'
-  end
-
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_story
       @story = Story.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
+    def set_project
+      @project = Project.find(params[:project_id])
+    end
+
     def story_params
-      params.require(:story).permit(:goal, :stakeholder, :behavior, :business_value, :complexity_value, :status_id)
+      params.require(:story).permit(:goal, :stakeholder, :behavior, :business_value, :complexity_value, :status_id, :project_id)
     end
 end
