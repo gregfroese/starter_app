@@ -5,10 +5,7 @@ StarterApp::Application.routes.draw do
     resources :stories
   end
   resources :statuses
-<<<<<<< HEAD
   resources :comments
-=======
->>>>>>> 76ad6fb8c635da75ef518676335e9081d17cebf0
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
