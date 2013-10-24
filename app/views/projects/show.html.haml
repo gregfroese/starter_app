@@ -12,8 +12,6 @@
       %tr
         %td= story.goal
         %td= story.stakeholder
-        %td= link_to 'Show', story
         %td= link_to 'Edit Story', edit_project_story_path(@project, story)
-        %td= link_to 'Destroy', story, method: :delete, data: { confirm: 'Are you sure?' }
 %br
 = link_to 'New Story', new_project_story_path(@project)

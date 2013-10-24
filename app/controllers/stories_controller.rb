@@ -1,8 +1,9 @@
 class StoriesController < ApplicationController
   before_action :set_story, only: [:show, :edit, :update, :destroy]
+  before_action :set_project
 
   def new
-    @story = Story.new(:project_id => params[:project_id])
+    @story = Story.new
   end
 
   def edit
@@ -13,7 +14,7 @@ class StoriesController < ApplicationController
     @story = Story.new(story_params)
 
     if @story.save
-      redirect_to @story, notice: 'Story was successfully created.'
+      redirect_to @project, notice: 'Story was successfully created.'
     else
       render action: 'new'
     end
@@ -22,7 +23,7 @@ class StoriesController < ApplicationController
   def update
     if @story.update(story_params)
       puts story_params
-      redirect_to @story, notice: 'Story was successfully updated.'
+      redirect_to @project, notice: 'Story was successfully updated.'
     else
       render action: 'edit'
     end
@@ -31,6 +32,10 @@ class StoriesController < ApplicationController
   private
     def set_story
       @story = Story.find(params[:id])
+    end
+
+    def set_project
+      @project = Project.find(params[:project_id])
     end
 
     def story_params
