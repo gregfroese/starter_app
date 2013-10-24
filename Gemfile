@@ -11,6 +11,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'turbolinks'
 gem 'thin'
+gem "haml-rails"
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
