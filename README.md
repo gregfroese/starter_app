@@ -4,10 +4,10 @@ This app is the initial project you should start with at the Rogue Rails worksho
 
 ## Contributors
 
-Rob Burns
-Adam Cuppy
-Greg Froese
-Joanna Zeta
++ Rob Burns
++ Adam Cuppy
++ Greg Froese
++ Joanna Zeta
 
 ## Setup
 
