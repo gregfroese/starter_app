@@ -1,0 +1,37 @@
+<%= form_for(@story) do |f| %>
+  <% if @story.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@story.errors.count, "error") %> prohibited this story from being saved:</h2>
+
+      <ul>
+      <% @story.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div id="">
+    <%= f.label :goal %>:
+    <%= f.text_field :goal %><br />
+
+    <%= f.label :stakeholder %>:
+    <%= f.text_field :stakeholder %><br />
+
+    <%= f.label :behavior %>:
+    <%= f.text_field :behavior %><br />
+
+    <%= f.label :business_value %>:
+    <%= f.select :business_value, [['0','0'],['1','1'],['2','2'],['3','3'],['4','4'],['5','5']] %>
+
+    <%= f.label :complexity_value %>:
+    <%= f.select :complexity_value, [['0','0'],['1','1'],['2','2'],['3','3'],['4','4'],['5','5']] %>
+
+    <%= f.label :status_id %>:
+    <%= f.select :status_id, Status.all.collect {|status| [status.name, status.id]} %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
