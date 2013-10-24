@@ -1,0 +1,17 @@
+%p{ :id => "notice"}= notice
+
+= @story.goal
+= @story.stakeholder
+= @story.behavior
+
+- @story.comments.each do |comment|
+  = comment.message
+
+- comment = Comment.new(story_id: @story.id)
+= form_for(comment) do |f|
+  = f.text_field :message
+  = f.hidden_field :story_id
+  = f.submit "Add Comment"
+
+= link_to 'Edit', edit_story_path(@story) |
+= link_to 'Back', stories_path

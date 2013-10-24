@@ -56,3 +56,17 @@ Then(/^I see the updated values in the edit story page$/) do
   page.should have_content "1"
   page.should have_content "2"
 end
+
+When(/^I view the story$/) do
+  visit story_url @story
+end
+
+When(/^I enter a comment$/) do
+  fill_in :comment_message, with: "My comment"
+end
+
+Then(/^I see the comment$/) do
+  visit story_url @story
+  page.should have_content "My comment"
+end
+

@@ -1,8 +1,10 @@
 StarterApp::Application.routes.draw do
+  get "comments/create"
   root 'projects#index'
   resources :projects
   resources :statuses
   resources :stories
+  resources :comments
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
