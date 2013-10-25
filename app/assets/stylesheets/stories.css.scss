@@ -22,6 +22,20 @@
   min-height: 100px;
 }
 
+.story-details .button {
+  display: block;
+  float: right;
+  clear: both;
+}
+
+.story-details--comments {
+  display: block;
+  float: right;
+  background: url("bubble.svg") no-repeat left center;
+  background-size: 20px 20px;
+  padding: 0 0 0px 30px;
+}
+
 // Story Statuses
 .status-unstarted {
   background-color: #F7C26D;
