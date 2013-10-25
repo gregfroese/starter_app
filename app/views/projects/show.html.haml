@@ -11,7 +11,7 @@
   %tbody
     - @stories.each do |story|
       %tr
-        %td= story.goal
+        %td= link_to story.goal, project_story_path(@project, story)
         %td= story.stakeholder
         %td= story.behavior
         %td= link_to 'Edit Story', edit_project_story_path(@project, story)
