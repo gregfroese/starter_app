@@ -7,7 +7,6 @@ class StoriesController < ApplicationController
   end
 
   def edit
-    puts "HERE I AM"
   end
 
   def create
@@ -22,7 +21,6 @@ class StoriesController < ApplicationController
 
   def update
     if @story.update(story_params)
-      puts story_params
       redirect_to @project, notice: 'Story was successfully updated.'
     else
       render action: 'edit'
