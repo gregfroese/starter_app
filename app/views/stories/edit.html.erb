@@ -1,5 +1,9 @@
-<h1>Editing story</h1>
+<div class="row">
+  <div class="large-12 columns">
+    <h1>Editing story</h1>
 
-<%= render 'form' %>
+    <%= render 'form' %>
 
-<%= link_to 'Show', project_story_path(@project, @story) %> |<%= link_to 'Back', project_path(@project) %>
+    <%= link_to 'Cancel', project_path(@project) %>
+  </div>
+</div>
