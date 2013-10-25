@@ -6,7 +6,7 @@ Feature:
 Scenario: Editing a story
   Given status records exist
   Given a story exists
-  Given I'm on the story index page
+  Given I'm on the project story list
   When I click "Edit Story"
   Then I see story in the edit page
   And I change the "story_goal" field to "changed goal"
