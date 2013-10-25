@@ -22,7 +22,7 @@ class Story < ActiveRecord::Base
   end
 
   def priority
-    return 0 if complexity_value == 0
+    return business_value if complexity_value == 0
     (business_value.to_f / complexity_value.to_f).to_f
   end
 end

@@ -19,4 +19,24 @@ describe Story do
       }
     end
   end
+
+  describe "priority" do 
+    it "is the ratio of business value to complexity value" do
+      story.business_value = 5
+      story.complexity_value = 2
+      story.priority.should eq 2.5
+    end
+
+    it "should be the business value if complexity value is 0" do
+      story.business_value = 3
+      story.complexity_value = 0
+      story.priority.should eq 3
+    end
+
+    it "should be 0 if business value is 0" do
+      story.business_value = 0
+      story.complexity_value = 5
+      story.priority.should eq 0
+    end
+  end
 end
