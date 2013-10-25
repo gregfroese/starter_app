@@ -1,17 +1,36 @@
 %div{:class => "row"}
   %div{:class => "large-12 columns"}
     %h1= @project.name
+    = link_to 'New Story', new_project_story_path(@project), { class: "small button"}
+    .row
+      .large-1.columns
+        &nbsp;
+      .large-10.columns
+        %ul.story-list
+          - @stories.each do |story|
+            %li.row.story
+              %div.story-valuation.large-1.columns{class: "story-valuation status-#{story.status.name.split.join('-').downcase} large-1 columns"}
+                %div.story-valuation--bv= story.business_value
+                %div.story-valuation--cv= story.complexity_value
 
-    %ul.story-list
-      - @stories.each do |story|
-        %li.row.story
-          %div.story-valuation.large-1.columns{class: "story-valuation status-#{story.status.name.split.join('-').downcase} large-1 columns"}
-            %div.story-valuation--bv= story.business_value
-            %div.story-valuation--cv= story.complexity_value
-            %div.story-valuation--status= story.status.name.split.join
-          %div.story-details.large-11.columns
-            %div= link_to story.behavior, project_story_path(@project, story), {class: 'story-details--behavior'}
-            %div= story.comments.size
-            %div= link_to 'Edit Story', edit_project_story_path(@project, story)
-    %br
-    = link_to 'New Story', new_project_story_path(@project)
+              %div.story-details.large-11.columns
+                %div.row
+                  %div.large-9.columns
+                    %div.story-details--goal
+                      %span
+                        In order to:
+                      = story.goal
+                    %div.story-details--stakeholder
+                      %span
+                        As a:
+                      = story.stakeholder
+                    %div.story-details--behavior
+                      %span
+                        I want to
+                      = story.behavior
+                  %div.large-3.columns
+                    %div.story-details--comments
+                      = story.comments.size
+                    %div= link_to 'Edit Story', edit_project_story_path(@project, story), { class: "small button"}
+      .large-1.columns
+        &nbsp;

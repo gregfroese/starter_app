@@ -1,9 +1,16 @@
-<a href="/projects/new">Create project</a>
+<% hide_project_list_link %>
 
-<ul>
-<% @projects.each do |p| %>
-	<li><a href="<%= project_path p %>"><%= p.name %></a></li>
-<% end %>
-</ul>
+<div class="row">
+	<div class="large-12 columns">
+		<h1>Project list</h1>
 
+		<ul>
+		<% @projects.each do |p| %>
+			<li><a href="<%= project_path p %>"><%= p.name %></a></li>
+		<% end %>
+		</ul>
+
+		<a href="/projects/new">Create project</a>
+	</div>
+</div>
 
