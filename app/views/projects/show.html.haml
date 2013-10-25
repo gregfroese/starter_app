@@ -1,15 +1,17 @@
 %div{:class => "row"}
   %div{:class => "large-12 columns"}
-    %h1 Listing stories
+    %h1= @project.name
 
-    %ul
+    %ul.story-list
       - @stories.each do |story|
-        %li
-          %div= story.business_value
-          %div= story.complexity_value
-          %div= story.status.name
-          %div.behavior= link_to story.behavior, project_story_path(@project, story), {:class => 'story-details--behavior'}
-          %div= story.comments.count
-          %div= link_to 'Edit Story', edit_project_story_path(@project, story)
+        %li.row.story
+          %div.story-valuation.large-1.columns{class: "story-valuation status-#{story.status.name.split.join('-').downcase} large-1 columns"}
+            %div.story-valuation--bv= story.business_value
+            %div.story-valuation--cv= story.complexity_value
+            %div.story-valuation--status= story.status.name.split.join
+          %div.story-details.large-11.columns
+            %div= link_to story.behavior, project_story_path(@project, story), {class: 'story-details--behavior'}
+            %div= story.comments.size
+            %div= link_to 'Edit Story', edit_project_story_path(@project, story)
     %br
     = link_to 'New Story', new_project_story_path(@project)

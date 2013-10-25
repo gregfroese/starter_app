@@ -1,42 +1,64 @@
-<%= form_for([@project, @story]) do |f| %>
-  <% if @story.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@story.errors.count, "error") %> prohibited this story from being saved:</h2>
+<div class="row">
+  <div class="large-12 columns">
+    <% if @story.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@story.errors.count, "error") %> prohibited this story from being saved:</h2>
 
-      <ul>
-      <% @story.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+        <ul>
+        <% @story.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+</div>
 
-  <div id="">
-    <%= f.label :goal %>:
+<div class="row">
+  <%= form_for([@project, @story]) do |f| %>
+
+  <div id="" class="large-8 columns">
+    <%= f.label :goal %>
     <%= f.text_field :goal %><br />
 
-    <%= f.label :stakeholder %>:
+    <%= f.label :stakeholder %>
     <%= f.text_field :stakeholder %><br />
 
-    <%= f.label :behavior %>:
+    <%= f.label :behavior %>
     <%= f.text_field :behavior %><br />
 
-    <%= f.label :business_value %>:
-    <%= f.select :business_value, 0..5 %>
+    <fieldset>
+      <div class="row">
+        <div class="large-4 columns">
+          <%= f.label :business_value %>
+          <%= f.select :business_value, 0..5, {}, { class: 'small secondary radius button dropdown'} %>
+        </div>
 
-    <%= f.label :complexity_value %>:
-    <%= f.select :complexity_value, 0..5 %>
+        <div class="large-4 columns">
+          <%= f.label :complexity_value %>
+          <%= f.select :complexity_value, 0..5, {}, { class: 'small secondary radius button dropdown'} %>
+        </div>
 
-    <%= f.label :status_id %>:
-    <%= f.select :status_id, Status.all.collect {|status| [status.name, status.id]} %>
+        <div class="large-4 columns">
+          <%= f.label :status_id %>
+          <%= f.select :status_id, Status.all.collect {|status| [status.name, status.id]}, {}, { class: 'small secondary radius button dropdown'} %>
+        </div>
+      </div>
+    </fieldset>
+
 
     <%= f.label :tags %>:
     <%= f.text_field :tag_list %>
 
     <%= f.hidden_field :project_id, value: @project.id %>
+    <div class="actions">
+      <br />
+      <%= f.submit "Save Story", { class: 'button' } %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Save Story" %>
-  </div>
-<% end %>
+
+
+  <% end %>
+
+</div>

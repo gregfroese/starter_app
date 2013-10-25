@@ -1,3 +1,28 @@
-// Place all the styles related to the stories controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.story-list {
+  list-style-type: none;
+}
+.story {
+  border: 1px solid #333;
+}
+.story-valuation {
+  border-right: 1px solid #333;
+  padding-top: 5px;
+  div {
+    padding: 5px;
+    text-align: center;
+  }
+}
+.story-valuation--bv, .story-valuation--cv {
+  border: 1px solid #777;
+}
+.story-valuation--status {
+  transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg); /* IE 9 */
+  -webkit-transform: rotate(-90deg); /* Safari and Chrome */
+  min-height: 100px;
+}
+
+// Story Statuses
+.status-in-progress {
+  background-color: #87AFC7;
+}
