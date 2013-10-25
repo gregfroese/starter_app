@@ -1,4 +1,6 @@
 class Story < ActiveRecord::Base
+  acts_as_ordered_taggable
+  
   validates :goal, presence: true
   validates :stakeholder, presence: true
   validates :behavior, presence: true

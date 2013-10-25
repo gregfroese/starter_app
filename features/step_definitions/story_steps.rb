@@ -125,3 +125,16 @@ Then(/^I want to see stories sorted in order of priority$/) do
   actual_order.should == @expected_order
 end
 
+When(/^I edit a story$/) do
+  visit edit_project_story_url @project, @story
+  fill_in :tags, :with =>  'one, two'
+end
+
+When(/^I add tags$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^the story has the tags$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
