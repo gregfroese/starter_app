@@ -31,6 +31,6 @@
                   %div.large-3.columns
                     %div.story-details--comments
                       = story.comments.size
-                    %div= link_to 'Edit Story', edit_project_story_path(@project, story), { class: "small button"}
+                %div.story-details--button= link_to 'Edit Story', edit_project_story_path(@project, story), { class: "small button"}
       .large-1.columns
         &nbsp;

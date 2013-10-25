@@ -1,45 +1,59 @@
 .story-list {
   list-style-type: none;
 }
+
 .story {
-  border: 1px solid #333;
+  border-top: 3px solid #777;
+  margin: 0 0 20px 0;
 }
+
+.story:last-child {
+  border-bottom: 3px solid #777;
+}
+
 .story-valuation {
-  border-right: 1px solid #333;
   padding-top: 5px;
   div {
     padding: 5px;
     text-align: center;
   }
 }
+
 .story-valuation--bv, .story-valuation--cv {
-  border: 1px solid #777;
-}
-.story-valuation--status {
-  transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg); /* IE 9 */
-  -webkit-transform: rotate(-90deg); /* Safari and Chrome */
-  min-height: 100px;
+  // border: 1px solid #777;
+  font-weight: bold;
+  font-size: 1.6em;
 }
 
-.story-details .button {
-  display: block;
-  float: right;
-  clear: both;
+.story-valuation--cv {
+  margin-bottom: 5px;
+}
+
+.story-details--button {
+  position: absolute;
+  bottom: -15px;
+  right: 5px;
+}
+
+.story-details span {
+  font-weight: bold;
+  font-size: 1.3em;
 }
 
 .story-details--comments {
   display: block;
   float: right;
-  background: url("bubble.svg") no-repeat left center;
+  background: url("bubble.svg") no-repeat right center;
   background-size: 20px 20px;
-  padding: 0 0 0px 30px;
+  margin-top: 10px;
+  padding: 0 30px 0px 0;
 }
 
 // Story Statuses
 .status-unstarted {
   background-color: #F7C26D;
 }
+
 .status-in-progress {
   background-color: #07AB1A;
 }
