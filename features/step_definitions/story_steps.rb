@@ -127,14 +127,8 @@ end
 
 When(/^I edit a story$/) do
   visit edit_project_story_url @project, @story
-  fill_in :tags, :with =>  'one, two'
 end
 
-When(/^I add tags$/) do
-  pending # express the regexp above with the code you wish you had
+Then(/^"(.*?)" contains "(.*?)"$/) do |field, value|
+  find_field(field).value.should eq value
 end
-
-Then(/^the story has the tags$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
