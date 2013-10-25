@@ -16,4 +16,13 @@ class Story < ActiveRecord::Base
   belongs_to :project
   belongs_to :status
   has_many :comments
+
+  def self.allByPriority
+    Story.all.sort_by(&:priority).reverse
+  end
+
+  def priority
+    return 0 if complexity_value == 0
+    (business_value.to_f / complexity_value.to_f).to_f
+  end
 end

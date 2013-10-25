@@ -80,3 +80,49 @@ Given(/^I'm on the story index page$/) do
   visit project_url @project
 end
 
+When(/^I have a list of stories$/) do
+  @project = Project.create(name: "Project 1")
+
+  @stories = []
+  @stories << Story.create(
+    goal: "goal",
+    stakeholder: "stakeholder",
+    behavior: "story 1",
+    status_id: 1,
+    business_value: 3,
+    complexity_value: 2,
+    project_id: @project.id
+  )
+  @stories << Story.create(
+    goal: "goal",
+    stakeholder: "stakeholder",
+    behavior: "story 2",
+    status_id: 1,
+    business_value: 1,
+    complexity_value: 3,
+    project_id: @project.id
+  )
+  @stories << Story.create(
+    goal: "goal",
+    stakeholder: "stakeholder",
+    behavior: "story 3",
+    status_id: 1,
+    business_value: 4,
+    complexity_value: 2,
+    project_id: @project.id
+  )
+  @expected_order = ["story 3", "story 1", "story 2"]
+
+end
+
+When(/^I visit the story list page$/) do
+  visit project_url @project
+end
+
+Then(/^I want to see stories sorted in order of priority$/) do
+  actual_order = page.all(:css, 'td.behavior').map { |td| td.text }
+  actual_order.should == @expected_order
+  puts actual_order
+  puts @expected_order
+end
+

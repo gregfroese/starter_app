@@ -13,7 +13,7 @@
       %tr
         %td= link_to story.goal, project_story_path(@project, story)
         %td= story.stakeholder
-        %td= story.behavior
+        %td.behavior= story.behavior
         %td= link_to 'Edit Story', edit_project_story_path(@project, story)
 %br
 = link_to 'New Story', new_project_story_path(@project)

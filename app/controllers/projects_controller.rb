@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
 	end
 
 	def show
-    	@stories = Story.all
+    	@stories = Story.allByPriority
 	end
 
 	private
