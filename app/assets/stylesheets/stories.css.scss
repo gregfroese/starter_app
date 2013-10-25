@@ -26,3 +26,34 @@
 .status-in-progress {
   background-color: #87AFC7;
 }
+
+.story-form {
+  label {
+    font-size: 1.1em;
+  }
+
+  input, textarea {
+    font-size: 1.3em;
+  }
+
+  #story_behavior {
+    height: 80px;
+  }
+}
+
+.story-comments {
+  li {
+    list-style-type: none;
+    background: url("bubble.svg") no-repeat left top;
+    background-size: 30px 30px;
+    padding: 0 0 0px 40px;
+    margin: 0 0 10px 0;
+    min-height: 30px;
+  }
+}
+
+.story-comments--timestamp {
+  font-size: 0.7em;
+  text-align: right;
+}
+

@@ -17,15 +17,15 @@
 <div class="row">
   <%= form_for([@project, @story]) do |f| %>
 
-  <div id="" class="large-8 columns">
-    <%= f.label :goal %>
-    <%= f.text_field :goal %><br />
+  <div id="" class="large-8 columns story-form">
+    <%= f.label :goal, "In order to" %>
+    <%= f.text_area :goal, { placeholder: "<Goal>"} %><br />
 
-    <%= f.label :stakeholder %>
-    <%= f.text_field :stakeholder %><br />
+    <%= f.label :stakeholder, "As a" %>
+    <%= f.text_field :stakeholder, { placeholder: "<Stakeholder>"} %><br />
 
-    <%= f.label :behavior %>
-    <%= f.text_field :behavior %><br />
+    <%= f.label :behavior, "I want to" %>
+    <%= f.text_area :behavior, { placeholder: "<Behavior>" } %><br />
 
     <fieldset>
       <div class="row">
@@ -56,6 +56,11 @@
       <%= f.submit "Save Story", { class: 'button' } %>
     </div>
   </div>
+  <% if @story.id %>
+    <div id="" class="large-4 columns story-comments">
+      <%= render "comments" %>
+    </div>
+  <% end %>
 
 
 
