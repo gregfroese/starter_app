@@ -21,7 +21,7 @@ end
 
 Then(/^I see the story in the story list$/) do
   visit project_url @project
-  page.should have_content "My goal"
+  page.should have_content "behavior"
 end
 
 Given(/^status records exist$/) do
@@ -31,13 +31,14 @@ end
 
 Given(/^a story exists$/) do
   @project = Project.create()
+  @status = Status.first
   @story = Story.create(
     goal: "goal",
     stakeholder: "stakeholder",
     behavior: "behavior",
     business_value: 1,
     complexity_value: 1,
-    status_id: 7,
+    status_id: @status.id,
     project_id: @project.id
   )
 end
@@ -76,7 +77,7 @@ Then(/^I see the comment$/) do
   page.should have_content "My comment"
 end
 
-Given(/^I'm on the story index page$/) do
+Given(/^I'm on the project story list$/) do
   visit project_url @project
 end
 
