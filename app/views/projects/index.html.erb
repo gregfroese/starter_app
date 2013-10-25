@@ -4,13 +4,18 @@
 	<div class="large-12 columns">
 		<h1>Project list</h1>
 
-		<ul>
+    <a class="small button" href="/projects/new">Create project</a>
+
+		<ul class="project-list">
 		<% @projects.each do |p| %>
-			<li><a href="<%= project_path p %>"><%= p.name %></a></li>
+			<li>
+        <a href="<%= project_path p %>"><%= p.name %></a>
+        <span class="story-count">(<%= p.stories.size %> stories)</span>
+      </li>
 		<% end %>
 		</ul>
 
-		<a href="/projects/new">Create project</a>
+
 	</div>
 </div>
 
