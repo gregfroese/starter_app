@@ -8,7 +8,7 @@
           %div= story.business_value
           %div= story.complexity_value
           %div= story.status.name
-          %div.behavior= link_to story.behavior, project_story_path(@project, story)
+          %div.behavior= link_to story.behavior, project_story_path(@project, story), {:class => 'story-details--behavior'}
           %div= story.comments.count
           %div= link_to 'Edit Story', edit_project_story_path(@project, story)
     %br

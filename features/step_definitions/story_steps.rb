@@ -25,8 +25,8 @@ Then(/^I see the story in the story list$/) do
 end
 
 Given(/^status records exist$/) do
-  Status.create(name: "In Progress")
-  Status.create(name: "Unstarted")
+  @status_one = Status.create(name: "In Progress")
+  @status_two = Status.create(name: "Unstarted")
 end
 
 Given(/^a story exists$/) do
@@ -89,7 +89,7 @@ When(/^I have a list of stories$/) do
     goal: "goal",
     stakeholder: "stakeholder",
     behavior: "story 1",
-    status_id: 1,
+    status_id: @status_one.id,
     business_value: 3,
     complexity_value: 2,
     project_id: @project.id
@@ -98,7 +98,7 @@ When(/^I have a list of stories$/) do
     goal: "goal",
     stakeholder: "stakeholder",
     behavior: "story 2",
-    status_id: 1,
+    status_id: @status_one.id,
     business_value: 1,
     complexity_value: 3,
     project_id: @project.id
@@ -107,7 +107,7 @@ When(/^I have a list of stories$/) do
     goal: "goal",
     stakeholder: "stakeholder",
     behavior: "story 3",
-    status_id: 1,
+    status_id: @status_one.id,
     business_value: 4,
     complexity_value: 2,
     project_id: @project.id
@@ -121,9 +121,7 @@ When(/^I visit the story list page$/) do
 end
 
 Then(/^I want to see stories sorted in order of priority$/) do
-  actual_order = page.all(:css, 'td.behavior').map { |td| td.text }
+  actual_order = page.all(:css, 'a.story-details--behavior').map { |a| a.text }
   actual_order.should == @expected_order
-  puts actual_order
-  puts @expected_order
 end
 
