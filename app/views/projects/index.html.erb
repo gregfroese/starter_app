@@ -2,7 +2,7 @@
 
 <ul>
 <% @projects.each do |p| %>
-	<li><%= p.name %></li>
+	<li><a href="<%= project_path p %>"><%= p.name %></a></li>
 <% end %>
 </ul>
 
