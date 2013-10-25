@@ -127,6 +127,7 @@ GEM
     mysql2 (0.3.13)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
+    pg (0.17.0)
     pickle (0.4.11)
       cucumber (>= 0.8)
       rake
@@ -222,6 +223,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   mysql2
+  pg
   pickle
   rails (= 4.0.0)
   rspec-rails (~> 2.0)

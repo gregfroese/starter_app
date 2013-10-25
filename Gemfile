@@ -33,3 +33,7 @@ group :test do
   gem 'headless'
   gem 'pickle'
 end
+
+group :production do
+  gem 'pg'
+end
