@@ -7,7 +7,7 @@ Scenario:
 	Given status records exist
 	And a story exists
 	When I edit a story
-	And I change the "Tag list" field to "one, two"
+	And I change the "Tag list" field to "one, two, one"
 	And I click "Save Story"
 	And I click "Edit Story"
 	Then "Tag list" contains "one, two"
