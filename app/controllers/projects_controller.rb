@@ -16,7 +16,19 @@ class ProjectsController < ApplicationController
 	end
 
 	def show
-    	@stories = Story.allByPriority
+    @stories = @project.stories
+	end
+
+	def sortorder
+		puts params
+		position = 1
+		params["story"].each do |id|
+			story = Story.find(id)
+			story.position = position
+			story.save
+			position = position + 1
+		end
+		render :nothing => true
 	end
 
 	private
@@ -28,4 +40,5 @@ class ProjectsController < ApplicationController
 	def project_params
 		params.required(:project).permit(:name)
 	end
+	
 end

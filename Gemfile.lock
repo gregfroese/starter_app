@@ -34,6 +34,8 @@ GEM
       tzinfo (~> 0.3.37)
     acts-as-taggable-on (2.4.1)
       rails (>= 3, < 5)
+    acts_as_list (0.3.0)
+      activerecord (>= 3.0)
     addressable (2.3.5)
     arel (4.0.0)
     atomic (1.1.14)
@@ -207,6 +209,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on
+  acts_as_list
   better_errors
   binding_of_caller
   capybara-screenshot

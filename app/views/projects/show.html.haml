@@ -2,13 +2,14 @@
   %div{:class => "large-12 columns"}
     %h1= @project.name
     = link_to 'New Story', new_project_story_path(@project), { class: "small button"}
+    %br
     .row
       .large-1.columns
-        &nbsp;
+        %input{type: "hidden", id: "project_id", name: "project_id", value: "#{@project.id}"}
       .large-10.columns
-        %ul.story-list
+        %ul#sortme.story-list.ui-sortable
           - @stories.each do |story|
-            %li.row.story
+            %li.row.story.ui-state-default.sortitem{id: "story_#{story.id}"}
               %div.story-valuation.large-1.columns{class: "story-valuation status-#{story.status.name.split.join('-').downcase} large-1 columns"}
                 %div.story-valuation--bv= story.business_value
                 %div.story-valuation--cv= story.complexity_value
