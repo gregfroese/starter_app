@@ -11,11 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131026061521) do
+ActiveRecord::Schema.define(version: 20131027081231) do
 
   create_table "comments", force: true do |t|
     t.text     "message"
     t.integer  "story_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "iterations", force: true do |t|
+    t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -43,6 +49,7 @@ ActiveRecord::Schema.define(version: 20131026061521) do
     t.datetime "updated_at"
     t.integer  "project_id",       default: 0
     t.integer  "position",         default: 0
+    t.integer  "iteration_id",     default: 0
   end
 
   create_table "taggings", force: true do |t|

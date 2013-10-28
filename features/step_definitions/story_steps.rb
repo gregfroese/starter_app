@@ -39,7 +39,8 @@ Given(/^a story exists$/) do
     business_value: 1,
     complexity_value: 1,
     status_id: @status.id,
-    project_id: @project.id
+    project_id: @project.id,
+    position: 0
   )
 end
 
@@ -92,7 +93,8 @@ When(/^I have a list of stories$/) do
     status_id: @status_one.id,
     business_value: 3,
     complexity_value: 2,
-    project_id: @project.id
+    project_id: @project.id,
+    position: 0
   )
   @stories << Story.create(
     goal: "goal",
@@ -101,7 +103,8 @@ When(/^I have a list of stories$/) do
     status_id: @status_one.id,
     business_value: 1,
     complexity_value: 3,
-    project_id: @project.id
+    project_id: @project.id,
+    position: 0
   )
   @stories << Story.create(
     goal: "goal",
@@ -110,7 +113,8 @@ When(/^I have a list of stories$/) do
     status_id: @status_one.id,
     business_value: 4,
     complexity_value: 2,
-    project_id: @project.id
+    project_id: @project.id,
+    position: 0
   )
   @expected_order = ["story 3", "story 1", "story 2"]
 
@@ -121,7 +125,7 @@ When(/^I visit the story list page$/) do
 end
 
 Then(/^I want to see stories sorted in order of priority$/) do
-  actual_order = page.all(:css, 'a.story-details--behavior').map { |a| a.text }
+  actual_order = page.all(:css, 'div.story-details--behavior---text').map { |a| a.text }
   actual_order.should == @expected_order
 end
 

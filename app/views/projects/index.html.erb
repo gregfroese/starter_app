@@ -8,9 +8,24 @@
 
 		<ul class="project-list">
 		<% @projects.each do |p| %>
-			<li>
-        <a href="<%= project_path p %>"><%= p.name %></a>
-        <span class="story-count">(<%= p.stories.size %> stories)</span>
+      <h3><%= p.name %></h3>
+			<li class="project_#{p.id}">
+        <div class="project-details">
+          <ul class="project-details-list">
+            
+            <li>
+              <span class="iteration-story-count iteration-story-count-project-#{p.id}">
+                <%= link_to  "Iteration stories: #{p.iterations.last.stories.size}", current_project_stories_url(p) %>
+              </span>
+              <span class="iteration-count">(<%= p.iterations.size %> iterations)</span>
+            </li>
+            <li>
+              <span class="story-count">
+                <%= link_to  "Icebox: #{p.stories.size} stories", icebox_project_stories_url(p) %>
+              </span>
+            </li>
+          </ul>
+        </div>
       </li>
 		<% end %>
 		</ul>

@@ -3,35 +3,24 @@
     %h1= @project.name
     = link_to 'New Story', new_project_story_path(@project), { class: "small button"}
     %br
+
     .row
       .large-1.columns
         %input{type: "hidden", id: "project_id", name: "project_id", value: "#{@project.id}"}
       .large-10.columns
-        %ul#sortme.story-list.ui-sortable
-          - @stories.each do |story|
-            %li.row.story.ui-state-default.sortitem{id: "story_#{story.id}"}
-              %div.story-valuation.large-1.columns{class: "story-valuation status-#{story.status.name.split.join('-').downcase} large-1 columns"}
-                %div.story-valuation--bv= story.business_value
-                %div.story-valuation--cv= story.complexity_value
+        %div#iteration-switch.switch.small
+          / %input{type: "hidden", id: "project_id", name: "switch", value: "current"}
+          %input{id: "x", name: "switch-x", type: "radio", checked: "checked", data: {view: "current"}}
+          %label{for: "x"}
+            Current Iteration
 
-              %div.story-details.large-11.columns
-                %div.row
-                  %div.large-9.columns
-                    %div.story-details--goal
-                      %span
-                        In order to:
-                      = story.goal
-                    %div.story-details--stakeholder
-                      %span
-                        As a:
-                      = story.stakeholder
-                    %div.story-details--behavior
-                      %span
-                        I want to
-                      = story.behavior
-                  %div.large-3.columns
-                    %div.story-details--comments
-                      = story.comments.size
-                %div.story-details--button= link_to 'Edit Story', edit_project_story_path(@project, story), { class: "small button"}
+          %input{id: "x1", name: "switch-x", type: "radio", data: {view: "icebox"}}
+          %label{for: "x1"}
+            Icebox
+
+          %span
+
+        %div.story-list
+          = render "story_list"
       .large-1.columns
         &nbsp;

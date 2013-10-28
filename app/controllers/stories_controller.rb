@@ -27,6 +27,22 @@ class StoriesController < ApplicationController
     end
   end
 
+  def current
+    project = Project.find(params[:project_id])
+    @stories = project.iterations.last.stories
+  end
+
+  def icebox
+    project = Project.find(params[:project_id])
+    @stories = project.stories - project.iterations.last.stories
+  end
+
+  def addtoiteration
+    @story = Story.find(params[:id])
+    @story.iteration_id = @project.iterations.last.id
+    @story.save
+  end
+
   private
     def set_story
       @story = Story.find(params[:id])
@@ -37,6 +53,6 @@ class StoriesController < ApplicationController
     end
 
     def story_params
-      params.require(:story).permit(:goal, :stakeholder, :behavior, :business_value, :complexity_value, :status_id, :project_id, :tag_list)
+      params.require(:story).permit(:goal, :stakeholder, :behavior, :business_value, :complexity_value, :status_id, :project_id, :tag_list, :position)
     end
 end

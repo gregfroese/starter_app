@@ -20,10 +20,10 @@ class ProjectsController < ApplicationController
 	end
 
 	def sortorder
-		puts params
+		# project = Project.find(params["project_id"])
 		position = 1
 		params["story"].each do |id|
-			story = Story.find(id)
+			story = Story.find id
 			story.position = position
 			story.save
 			position = position + 1

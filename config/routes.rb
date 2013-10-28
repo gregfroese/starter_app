@@ -3,15 +3,24 @@ StarterApp::Application.routes.draw do
   root 'projects#index'
 
   resources :projects do
-    # member do
-    #   post "sortorder"
-    # end
-    resources :stories
+    member do
+      post "sortorder"
+    end
+    resources :stories do
+      collection do
+        get "current"
+        get "icebox"
+      end
+      member do
+        post "addtoiteration"
+      end
+    end
   end
   resources :statuses
   resources :comments
 
-  post "projects/:project_id/sortorder" =>  "projects#sortorder"
+  # post "projects/:project_id/sortorder" =>  "projects#sortorder"
+  # get "projects/:project_id/sortorder" =>  "projects#sortorder"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,19 @@
+%div{:class => "row"}
+  %div{:class => "large-12 columns"}
+    %h1= @project.name
+    = link_to 'New Story', new_project_story_path(@project), { class: "small button"}
+    - if Rails.application.routes.recognize_path(request.path)[:action] == "icebox"
+      = link_to  "View Current Iteration", current_project_stories_url(@project), { class: "small button icebox-iteration-button" }
+    - elsif Rails.application.routes.recognize_path(request.path)[:action] == "current"
+      = link_to  "View Icebox", icebox_project_stories_url(@project), { class: "small button icebox-iteration-button" }
+
+    %br
+
+    .row
+      .large-1.columns
+        %input{type: "hidden", id: "project_id", name: "project_id", value: "#{@project.id}"}
+      .large-10.columns
+        %div.story-list
+          = render "projects/story_list"
+      .large-1.columns
+        &nbsp;

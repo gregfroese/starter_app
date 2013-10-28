@@ -10,7 +10,15 @@ $ ->
     scroll: true
     update: ->
       project_id = $("#project_id").val()
-      data = $("#sortme").sortable('serialize')
       $.post("/projects/" + project_id + "/sortorder", $(this).sortable('serialize'))
+
+  $("#iteration-switch input").click (event) ->
+    project_id = $("#project_id").val()
+    $.ajax "/projects/" + project_id + "/" + $(event.target).data("view"),
+      complete: ->
+        console.log "complete"
+    
+
+
       
-      
+
