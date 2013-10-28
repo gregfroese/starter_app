@@ -3,6 +3,7 @@ Feature:
   As a user
   I want to remove stories from the current iteration
 
+@javascript
 Scenario:
   Given I have a project stories in the current iteration
   When I view the project current iteration page

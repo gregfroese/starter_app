@@ -3,7 +3,7 @@ Given(/^a project exists$/) do
 end
 
 Given(/^I'm on that project page$/) do
-  visit project_url(@project.id)
+  visit project_path(@project.id)
 end
 
 When(/^I click "(.*?)"$/) do |link_or_button|
@@ -45,7 +45,7 @@ Given(/^a story exists$/) do
 end
 
 Then(/^I see story in the edit page$/) do
-  visit edit_project_story_url @project, @story
+  visit edit_project_story_path @project, @story
 end
 
 Then(/^I change the "(.*?)" field to "(.*?)"$/) do |field, value|
@@ -57,7 +57,7 @@ Then(/^I select "(.*?)" for "(.*?)"$/) do |value, field|
 end
 
 Then(/^I see the updated values in the edit story page$/) do
-  visit edit_project_story_url @project, @story
+  visit edit_project_story_path @project, @story
   find_field('story_goal').value.should eq "changed goal"
   find_field('story_stakeholder').value.should eq "changed stakeholder"
   find_field('story_behavior').value.should eq "changed behavior"
@@ -66,7 +66,7 @@ Then(/^I see the updated values in the edit story page$/) do
 end
 
 When(/^I view the story$/) do
-  visit project_story_url @project, @story
+  visit project_story_path @project, @story
 end
 
 When(/^I enter a comment$/) do
@@ -74,12 +74,12 @@ When(/^I enter a comment$/) do
 end
 
 Then(/^I see the comment$/) do
-  visit project_story_url @project, @story
+  visit project_story_path @project, @story
   page.should have_content "My comment"
 end
 
 Given(/^I'm on the project story list$/) do
-  visit project_url @project
+  visit project_path @project
 end
 
 When(/^I have a list of stories$/) do
@@ -124,7 +124,7 @@ When(/^I have a list of stories$/) do
 end
 
 When(/^I visit the story list page$/) do
-  visit project_url @project
+  visit project_path @project
 end
 
 Then(/^I want to see stories sorted in order of priority$/) do
@@ -133,7 +133,7 @@ Then(/^I want to see stories sorted in order of priority$/) do
 end
 
 When(/^I edit a story$/) do
-  visit edit_project_story_url @project, @story
+  visit edit_project_story_path @project, @story
 end
 
 Then(/^"(.*?)" contains "(.*?)"$/) do |field, value|
@@ -141,7 +141,7 @@ Then(/^"(.*?)" contains "(.*?)"$/) do |field, value|
 end
 
 When(/^I visit the project icebox$/) do
-  visit icebox_project_stories_url @project
+  visit icebox_project_stories_path @project
 end
 
 Then(/^the stories are in the expected order$/) do

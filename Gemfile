@@ -21,6 +21,7 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'debugger'
   gem 'mysql2'
+  gem 'selenium-webdriver'
 end
 
 group :test do

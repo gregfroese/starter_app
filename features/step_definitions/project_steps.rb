@@ -1,5 +1,5 @@
 Given(/^I am on the project list page$/) do
-  visit projects_url
+  visit projects_path
 end
 
 When(/^I click the "(.*?)" link$/) do |text|  
@@ -19,7 +19,7 @@ Then(/^I see "(.*?)"$/) do |text|
 end
 
 Then(/^I expect to see (\d+) iterations on the project page$/) do |arg1|
-  visit projects_url
+  visit projects_path
   page.should have_content "Iteration stories: 0"
 end
 
@@ -80,24 +80,24 @@ Given(/^I have a project with a list of stories$/) do
 end
 
 When(/^I view the project current iteration page$/) do
-  visit current_project_stories_url @project
+  visit current_project_stories_path @project
 end
 
 Then(/^I expect to see all stories in the icebox view$/) do
   page.should_not have_content "In order to"
-  visit icebox_project_stories_url @project
+  visit icebox_project_stories_path @project
   page.should have_content "In order to"
 end
 
 When(/^I view the project icebox page$/) do
-  visit icebox_project_stories_url @project
+  visit icebox_project_stories_path @project
 end
 
 When(/^I visit the project list$/) do
-  visit projects_url
+  visit projects_path
 end
 
 Given(/^there is no project named "(.*?)"$/) do |name|
-  visit projects_url
+  visit projects_path
   page.should_not have_content "Jiri"
 end
