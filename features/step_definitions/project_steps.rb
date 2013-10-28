@@ -7,7 +7,7 @@ When(/^I click the "(.*?)" link$/) do |text|
 end
 
 When(/^fill in the "(.*?)" field with "(.*?)"$/) do |name, value|
-  fill_in(name, :with => 'value')
+  fill_in(name, :with => value)
 end
 
 When(/^click the "(.*?)" button$/) do |text|
@@ -21,6 +21,34 @@ end
 Then(/^I expect to see (\d+) iterations on the project page$/) do |arg1|
   visit projects_url
   page.should have_content "Iteration stories: 0"
+end
+
+Given(/^I have a project stories in the current iteration$/) do
+  @project = Project.create(name: "name")
+  @stories = []
+  @status ||= Status.create(name: "status")
+
+  story = Story.create(
+    goal: "story 1",
+    stakeholder: "stakeholder",
+    behavior: "behavior",
+    business_value: 1,
+    complexity_value: 1,
+    status_id: @status.id,
+    project_id: @project.id,
+    position: 0,
+    iteration_id: @project.iterations.last.id
+  )
+  @stories << story
+
+  story.goal = "story 2"
+  @stories << story
+  
+  story.goal = "story 3"
+  @stories << story
+
+  story.goal = "story 4"
+  @stories << story
 end
 
 Given(/^I have a project with a list of stories$/) do
@@ -63,4 +91,13 @@ end
 
 When(/^I view the project icebox page$/) do
   visit icebox_project_stories_url @project
+end
+
+When(/^I visit the project list$/) do
+  visit projects_url
+end
+
+Given(/^there is no project named "(.*?)"$/) do |name|
+  visit projects_url
+  page.should_not have_content "Jiri"
 end

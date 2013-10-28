@@ -27,4 +27,8 @@
               %div.story-details--comments
                 = story.comments.size
           %div.story-details--edit-button= link_to 'Edit Story', edit_project_story_path(@project, story), { class: "small button"}
-          %div.story-details--iteration-button{id: "iteration-button-" + dom_id(story)}= link_to 'Add to current iteration', addtoiteration_project_story_path(@project, {id: story.id}), { class: "small button", remote: true, method: "post"}
+          %div.story-details--iteration-button{id: "iteration-button-" + dom_id(story)}
+            - if story.iteration_id != 0
+              = link_to 'Remove from iteration', removefromiteration_project_story_path(@project, {id: story.id}), { class: "small button", remote: true, method: "post"}
+            - else
+              = link_to 'Add to current iteration', addtoiteration_project_story_path(@project, {id: story.id}), { class: "small button", remote: true, method: "post"}

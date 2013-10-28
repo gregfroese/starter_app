@@ -1,26 +1,3 @@
 %div{:class => "row"}
   %div{:class => "large-12 columns"}
-    %h1= @project.name
-    = link_to 'New Story', new_project_story_path(@project), { class: "small button"}
-    %br
-
-    .row
-      .large-1.columns
-        %input{type: "hidden", id: "project_id", name: "project_id", value: "#{@project.id}"}
-      .large-10.columns
-        %div#iteration-switch.switch.small
-          / %input{type: "hidden", id: "project_id", name: "switch", value: "current"}
-          %input{id: "x", name: "switch-x", type: "radio", checked: "checked", data: {view: "current"}}
-          %label{for: "x"}
-            Current Iteration
-
-          %input{id: "x1", name: "switch-x", type: "radio", data: {view: "icebox"}}
-          %label{for: "x1"}
-            Icebox
-
-          %span
-
-        %div.story-list
-          = render "story_list"
-      .large-1.columns
-        &nbsp;
+    %h1 Don't use me

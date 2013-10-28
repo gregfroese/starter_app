@@ -10,9 +10,11 @@ StarterApp::Application.routes.draw do
       collection do
         get "current"
         get "icebox"
+        post "resetsortorder"
       end
       member do
         post "addtoiteration"
+        post "removefromiteration"
       end
     end
   end

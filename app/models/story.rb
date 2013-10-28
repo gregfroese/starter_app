@@ -1,6 +1,6 @@
 class Story < ActiveRecord::Base
   acts_as_ordered_taggable
-  acts_as_list :scope => :project
+  acts_as_list :scope => :iteration
   
   validates :goal, presence: true
   validates :stakeholder, presence: true
@@ -18,10 +18,15 @@ class Story < ActiveRecord::Base
 
   belongs_to :project
   belongs_to :status
+  belongs_to :iteration
   has_many :comments
 
   def self.allByPriority
     Story.all.sort_by(&:priority).reverse
+  end
+
+  def self.storiesInIterationByPriority iteration_id
+    Story.where(iteration_id: iteration_id).sort_by(&:priority).reverse
   end
 
   def priority

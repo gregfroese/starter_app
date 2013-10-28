@@ -39,4 +39,63 @@ describe Story do
       story.priority.should eq 0
     end
   end
+
+  describe "reset sort order" do
+    it "should resort stories based on priority" do
+      @stories = []
+      @status_one = Status.create(name: "nothing")
+      @project = Project.create(name: "name")
+      @stories << Story.create(
+        goal: "goal",
+        stakeholder: "stakeholder",
+        behavior: "story 1",
+        status_id: @status_one.id,
+        business_value: 3,
+        complexity_value: 2,
+        project_id: @project.id,
+        position: 0,
+        iteration_id: 0
+      )
+      @stories << Story.create(
+        goal: "goal",
+        stakeholder: "stakeholder",
+        behavior: "story 2",
+        status_id: @status_one.id,
+        business_value: 1,
+        complexity_value: 3,
+        project_id: @project.id,
+        position: 0,
+        iteration_id: 0
+      )
+      @stories << Story.create(
+        goal: "goal",
+        stakeholder: "stakeholder",
+        behavior: "story 3",
+        status_id: @status_one.id,
+        business_value: 4,
+        complexity_value: 2,
+        project_id: @project.id,
+        position: 0,
+        iteration_id: 0
+      )
+      @stories << Story.create(
+        goal: "goal",
+        stakeholder: "stakeholder",
+        behavior: "story 4",
+        status_id: @status_one.id,
+        business_value: 4,
+        complexity_value: 2,
+        project_id: @project.id,
+        position: 0,
+        iteration_id: @project.iterations.last.id
+      )
+
+      sorted = Story.storiesInIterationByPriority 0
+      sorted.size.should eq 3
+      sorted[0].behavior.should eq "story 3"
+      sorted[1].behavior.should eq "story 1"
+      sorted[2].behavior.should eq "story 2"
+
+    end
+  end
 end

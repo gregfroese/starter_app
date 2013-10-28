@@ -6,6 +6,7 @@ Feature: Creating projects
 Scenario: Creating a project
   Given I am on the project list page
   When I click the "Create project" link
-  And fill in the "Name" field with "My project"
+  And fill in the "project_name" field with "My project"
   And click the "Create Project" button
+  And I visit the project list
   Then I see "My project"

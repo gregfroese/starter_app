@@ -6,8 +6,8 @@ Given(/^I'm on that project page$/) do
   visit project_url(@project.id)
 end
 
-When(/^I click "(.*?)"$/) do |text|
-  click_on text
+When(/^I click "(.*?)"$/) do |link_or_button|
+  click_on link_or_button
 end
 
 When(/^I fill in the story form$/) do
@@ -20,7 +20,6 @@ When(/^I fill in the story form$/) do
 end
 
 Then(/^I see the story in the story list$/) do
-  visit project_url @project
   page.should have_content "behavior"
 end
 
@@ -40,7 +39,8 @@ Given(/^a story exists$/) do
     complexity_value: 1,
     status_id: @status.id,
     project_id: @project.id,
-    position: 0
+    position: 0,
+    iteration_id: 0
   )
 end
 
@@ -94,7 +94,8 @@ When(/^I have a list of stories$/) do
     business_value: 3,
     complexity_value: 2,
     project_id: @project.id,
-    position: 0
+    position: 0,
+    iteration_id: 0
   )
   @stories << Story.create(
     goal: "goal",
@@ -104,7 +105,8 @@ When(/^I have a list of stories$/) do
     business_value: 1,
     complexity_value: 3,
     project_id: @project.id,
-    position: 0
+    position: 0,
+    iteration_id: 0
   )
   @stories << Story.create(
     goal: "goal",
@@ -114,7 +116,8 @@ When(/^I have a list of stories$/) do
     business_value: 4,
     complexity_value: 2,
     project_id: @project.id,
-    position: 0
+    position: 0,
+    iteration_id: 0
   )
   @expected_order = ["story 3", "story 1", "story 2"]
 
@@ -135,4 +138,16 @@ end
 
 Then(/^"(.*?)" contains "(.*?)"$/) do |field, value|
   find_field(field).value.should eq value
+end
+
+When(/^I visit the project icebox$/) do
+  visit icebox_project_stories_url @project
+end
+
+Then(/^the stories are in the expected order$/) do
+  stories = @project.stories - @project.iterations.last.stories
+
+  stories[0].id.should == 3
+  stories[1].id.should == 1
+  stories[2].id.should == 2
 end

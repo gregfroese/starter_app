@@ -1,7 +1,15 @@
 %div{:class => "row"}
   %div{:class => "large-12 columns"}
     %h1= @project.name
+
+    - if Rails.application.routes.recognize_path(request.path)[:action] == "icebox"
+      - iteration_id = 0
+    - elsif Rails.application.routes.recognize_path(request.path)[:action] == "current"
+      - iteration_id = @project.iterations.last.id
+
     = link_to 'New Story', new_project_story_path(@project), { class: "small button"}
+    = link_to 'Reset Sort Order', resetsortorder_project_stories_path(@project, iteration_id: iteration_id), { class: "small button", method: "post"}
+
     - if Rails.application.routes.recognize_path(request.path)[:action] == "icebox"
       = link_to  "View Current Iteration", current_project_stories_url(@project), { class: "small button icebox-iteration-button" }
     - elsif Rails.application.routes.recognize_path(request.path)[:action] == "current"

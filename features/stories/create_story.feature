@@ -6,8 +6,9 @@ Feature: Stories
 Scenario: Creating a story
   Given status records exist
   And a project exists
-  And I'm on that project page
+  And I visit the project icebox
   When I click "New Story"
   And I fill in the story form
   And I click "Save Story"
+  And I visit the project icebox
   Then I see the story in the story list
