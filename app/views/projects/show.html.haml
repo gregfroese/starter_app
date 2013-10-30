@@ -1,3 +1,17 @@
-%div{:class => "row"}
-  %div{:class => "large-12 columns"}
-    %h1 Don't use me
+%div.row
+
+  %div.large-12.columns
+    %h3= @project.name
+
+    %h5 CURRENT ITERATION
+    = link_to 'New story in iteration', new_project_story_path(@project, {iteration_id: @project.iterations.last.id}), { class: "small button"}
+
+    %div.story-container
+      = render partial: "story_list", locals: { stories: @iteration, list_type: "iteration_ul" }
+
+%div.row
+  %div.large-12.columns
+    %h5 ICEBOX
+    = link_to 'New story in icebox', new_project_story_path(@project, {iteration_id: 0}), { class: "small button"}
+    %div.story-container
+      = render partial: "story_list", locals: { stories: @icebox, list_type: "icebox_ul" }

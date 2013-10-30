@@ -1,2 +1,3 @@
-<% the_view = render "addtoiteration" %>
-$("#<%= "iteration-button-" + dom_id(@story) %>").html('<%= escape_javascript(the_view) %>');
+$("#iteration_ul").append($("#<%= dom_id(@story) %>"));
+$("#story_button_<%= @story.id.to_s%>").attr("href", "<%= removefromiteration_project_story_path(@project, {id: @story.id}) %>");
+$("#story_button_<%= @story.id.to_s%>").text("Remove from iteration");

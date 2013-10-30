@@ -3,7 +3,7 @@ class StoriesController < ApplicationController
   before_action :set_project
 
   def new
-    @story = Story.new
+    @story = Story.new(iteration_id: params[:iteration_id])
   end
 
   def edit
@@ -13,7 +13,7 @@ class StoriesController < ApplicationController
     @story = Story.new(story_params)
 
     if @story.save
-      redirect_to icebox_project_stories_path(@project), notice: 'Story was successfully created.'
+      redirect_to project_path(@project), notice: 'Story was successfully created.'
     else
       render action: 'new'
     end
@@ -73,6 +73,6 @@ class StoriesController < ApplicationController
     end
 
     def story_params
-      params.require(:story).permit(:goal, :stakeholder, :behavior, :business_value, :complexity_value, :status_id, :project_id, :tag_list, :position)
+      params.require(:story).permit(:goal, :stakeholder, :behavior, :business_value, :complexity_value, :status_id, :project_id, :tag_list, :position, :iteration_id)
     end
 end

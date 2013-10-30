@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $('#sortme').sortable
+  $('.sortme').sortable
     axis: 'y'
     cursor: 'crosshair'
     opacity: 0.6

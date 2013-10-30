@@ -7,7 +7,7 @@ Scenario: Editing a story
   Given status records exist
   Given a story exists
   Given I'm on the project story list
-  When I visit the project icebox
+  And I view the project page
   And I click "Edit Story"
   Then I see story in the edit page
   And I change the "story_goal" field to "changed goal"

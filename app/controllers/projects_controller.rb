@@ -16,7 +16,8 @@ class ProjectsController < ApplicationController
 	end
 
 	def show
-    @stories = @project.stories
+    @iteration = @project.iterations.last.stories
+    @icebox = @project.stories - @iteration
 	end
 
 	def sortorder

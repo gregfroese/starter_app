@@ -68,6 +68,7 @@ Given(/^I have a project with a list of stories$/) do
     iteration_id: 0
   )
   @stories << story
+  @first_story = story
 
   story.goal = "story 2"
   @stories << story
@@ -100,4 +101,12 @@ end
 Given(/^there is no project named "(.*?)"$/) do |name|
   visit projects_path
   page.should_not have_content "Jiri"
+end
+
+When(/^I view the project page$/) do
+  visit project_path @project
+end
+
+When(/^I find "(.*?)" and click "(.*?)"$/) do |element, link_or_button|
+  find(element + "_" + @first_story.id.to_s).click_on link_or_button
 end

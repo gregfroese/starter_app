@@ -51,6 +51,7 @@
     <%= f.text_field :tag_list %>
 
     <%= f.hidden_field :project_id, value: @project.id %>
+    <%= f.hidden_field :iteration_id, value: @story.iteration_id %>
     <div class="actions">
       <br />
       <%= f.submit "Save Story", { class: 'button' } %>

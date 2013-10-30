@@ -1,8 +1,8 @@
-%ul#sortme.story-list.ui-sortable
-  - if @stories.size == 0
-    %h3 No stories
+%ul.sortme.story-list.ui-sortable{id: list_type}
+  - if stories.size == 0
+    %h6 No stories
   - else
-    - @stories.each do |story|
+    - stories.each do |story|
       %li.row.story.ui-state-default.sortitem{id: "story_#{story.id}"}
         %div.story-valuation.large-1.columns{class: "story-valuation status-#{story.status.name.split.join('-').downcase} large-1 columns"}
           %div.story-valuation--bv= story.business_value
@@ -29,6 +29,6 @@
           %div.story-details--edit-button= link_to 'Edit Story', edit_project_story_path(@project, story), { class: "small button"}
           %div.story-details--iteration-button{id: "iteration-button-" + dom_id(story)}
             - if story.iteration_id != 0
-              = link_to 'Remove from iteration', removefromiteration_project_story_path(@project, {id: story.id}), { class: "small button", remote: true, method: "post"}
+              = link_to 'Remove from iteration', removefromiteration_project_story_path(@project, {id: story.id}), { class: "small button", remote: true, method: "post", id: "story_button_" + story.id.to_s}
             - else
-              = link_to 'Add to current iteration', addtoiteration_project_story_path(@project, {id: story.id}), { class: "small button", remote: true, method: "post"}
+              = link_to 'Add to current iteration', addtoiteration_project_story_path(@project, {id: story.id}), { class: "small button", remote: true, method: "post", id: "story_button_" + story.id.to_s}
