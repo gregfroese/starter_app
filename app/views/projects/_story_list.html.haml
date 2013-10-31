@@ -26,7 +26,8 @@
             %div.large-3.columns
               %div.story-details--comments
                 = story.comments.size
-          %div.story-details--edit-button= link_to 'Edit Story', edit_project_story_path(@project, story), { class: "small button"}
+          /# %div.story-details--edit-button= link_to 'Edit Story', edit_project_story_path(@project, story), { class: "small button"}
+          %div.story-details--edit-button= link_to 'Details', project_story_path(@project, story), { class: "small button"}
           %div.story-details--iteration-button{id: "iteration-button-" + dom_id(story)}
             - if story.iteration_id != 0
               = link_to 'Remove from iteration', removefromiteration_project_story_path(@project, {id: story.id}), { class: "small button", remote: true, method: "post", id: "story_button_" + story.id.to_s}

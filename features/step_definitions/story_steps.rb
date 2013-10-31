@@ -151,3 +151,16 @@ Then(/^the stories are in the expected order$/) do
   stories[1].id.should == 1
   stories[2].id.should == 2
 end
+
+Given(/^I view the story page$/) do
+  visit project_story_path @project, @story
+end
+
+When(/^I add acceptance criteria$/) do
+  fill_in :criterium_details, with: "new acceptance criteria!"
+end
+
+Then(/^I see the acceptance criteria on the show page$/) do
+  visit project_story_path(@project, @story)
+  page.should have_content "new acceptance criteria!"
+end

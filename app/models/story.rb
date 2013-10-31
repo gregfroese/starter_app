@@ -20,6 +20,7 @@ class Story < ActiveRecord::Base
   belongs_to :status
   belongs_to :iteration
   has_many :comments
+  has_many :criteria, class_name: "Criterium"
 
   def self.allByPriority
     Story.all.sort_by(&:priority).reverse

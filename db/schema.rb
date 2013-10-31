@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131027081231) do
+ActiveRecord::Schema.define(version: 20131030234853) do
 
   create_table "comments", force: true do |t|
     t.text     "message"
+    t.integer  "story_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "criteria", force: true do |t|
+    t.text     "details"
+    t.boolean  "solved"
     t.integer  "story_id"
     t.datetime "created_at"
     t.datetime "updated_at"

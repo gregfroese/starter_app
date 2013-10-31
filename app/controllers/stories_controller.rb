@@ -13,7 +13,7 @@ class StoriesController < ApplicationController
     @story = Story.new(story_params)
 
     if @story.save
-      redirect_to project_path(@project), notice: 'Story was successfully created.'
+      redirect_to project_story_path(@project, @story), notice: 'Story was successfully created.'
     else
       render action: 'new'
     end
@@ -21,7 +21,7 @@ class StoriesController < ApplicationController
 
   def update
     if @story.update(story_params)
-      redirect_to edit_project_story_path(@project, @story), notice: 'Story was successfully updated.'
+      redirect_to project_story_path(@project, @story), notice: 'Story was successfully updated.'
     else
       render action: 'edit'
     end
@@ -40,12 +40,14 @@ class StoriesController < ApplicationController
   def addtoiteration
     @story = Story.find(params[:id])
     @story.iteration_id = @project.iterations.last.id
+    @story.position = 0
     @story.save
   end
 
   def removefromiteration
     @story = Story.find(params[:id])
     @story.iteration_id = 0
+    @story.position = 0
     @story.save
   end
 
@@ -59,7 +61,7 @@ class StoriesController < ApplicationController
       position = position + 1
     end
 
-    redirect_to projects_path, notice: 'Stories successfully sorted.'
+    redirect_to project_path @project, notice: 'Stories successfully sorted.'
 
   end
 

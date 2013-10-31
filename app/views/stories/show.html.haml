@@ -1,17 +1,50 @@
-%p{ :id => "notice"}= notice
+%div.row
+  %div.large-12.columns
+    %p{ :id => "notice"}= notice
 
-= @story.goal
-= @story.stakeholder
-= @story.behavior
+    %div.story-text
+      %p
+        In order to
+        = @story.goal
+        %br
+        As a
+        = @story.stakeholder
+        %br
+        I want to
+        = @story.behavior
 
-- @story.comments.each do |comment|
-  = comment.message
+    %div.tags-container
+      = @story.tag_list
 
-- comment = Comment.new(story_id: @story.id)
-= form_for(comment) do |f|
-  = f.text_field :message
-  = f.hidden_field :story_id
-  = f.submit "Add Comment"
+    %div.comments-container
+      %h4 Comments
+      - @story.comments.each do |comment|
+        %span.comments-container--time
+          = comment.created_at.localtime.strftime("%Y-%m-%d %H:%M:%S")
+        = comment.message
+        %br
 
-= link_to 'Edit', edit_project_story_path(@project, @story) |
-= link_to 'Back', projects_path
+      - comment = Comment.new(story_id: @story.id)
+      = form_for(comment) do |f|
+        = f.text_field :message
+        = f.hidden_field :story_id
+        = f.submit "Add Comment", { class: "small button"}
+
+    %div.criteria-container
+      %h4 Acceptance Criteria
+      - @story.criteria.each do |criteria|
+        %span.criteria-container--time
+          = criteria.created_at.localtime.strftime("%Y-%m-%d %H:%M:%S")
+        = criteria.details
+        %br
+
+      - criterium = Criterium.new(story_id: @story.id)
+      = form_for(criterium) do |f|
+        = f.text_field :details
+        = f.hidden_field :story_id
+        = f.submit "Add Acceptance Criteria", { class: "small button"}
+
+
+    = link_to 'Edit', edit_project_story_path(@project, @story), { class: "small button"}
+    %br
+    = link_to 'Back', projects_path

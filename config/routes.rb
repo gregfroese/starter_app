@@ -20,6 +20,7 @@ StarterApp::Application.routes.draw do
   end
   resources :statuses
   resources :comments
+  resources :criteria
 
   # post "projects/:project_id/sortorder" =>  "projects#sortorder"
   # get "projects/:project_id/sortorder" =>  "projects#sortorder"

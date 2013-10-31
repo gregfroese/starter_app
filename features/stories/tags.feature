@@ -9,4 +9,5 @@ Scenario:
 	When I edit a story
 	And I change the "Tag list" field to "one, two, one"
 	And I click "Save Story"
+  And I edit a story
 	Then "Tag list" contains "one, two"
