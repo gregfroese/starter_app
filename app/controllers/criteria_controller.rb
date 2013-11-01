@@ -1,6 +1,6 @@
 class CriteriaController < ApplicationController
-  before_action :set_story
-  before_action :set_project
+  before_action :set_story, only: [:new, :edit, :create]
+  before_action :set_project, only: [:new, :edit, :create]
   
   def new
     @criterium = Criterium.new
@@ -20,24 +20,20 @@ class CriteriaController < ApplicationController
   end
 
   def update
-    if @criterium.update(criterium_params)
-      redirect_to project_story_path(@project, @story), notice: 'Acceptance criteria successfully updated.'
-    else
-      render action: 'edit'
-    end
+    @criterium = Criterium.find(params[:id])
+    @criterium.update(criterium_params)
   end
 
   private
   def criterium_params
-    params.require(:criterium).permit(:story_id, :details, :solved)
+    params.require(:criterium).permit(:story_id, :details, :dev_test, :functional_test)
   end
-  def set_story
-      @story = Story.find(params[:criterium][:story_id])
-      puts "---------"
-      puts @story.project_id
-    end
 
-    def set_project
-      @project = Project.find(Story.find(params[:criterium][:story_id]).project_id)
-    end
+  def set_story
+    @story = Story.find(params[:criterium][:story_id])
+  end
+
+  def set_project
+    @project = Project.find(Story.find(params[:criterium][:story_id]).project_id)
+  end
 end

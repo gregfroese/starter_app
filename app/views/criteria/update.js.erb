@@ -1,0 +1,7 @@
+<% if params[:criterium][:dev_test] %>
+  <% the_view = render partial: 'criteria/dev_test_solved', locals: {criterium: @criterium} %>
+  $(".dev_<%= dom_id(@criterium) %>").html("<%= escape_javascript(the_view) %>");
+<% else %>
+  <% the_view = render partial: 'criteria/functional_test_solved', locals: {criterium: @criterium} %>
+  $(".functional_<%= dom_id(@criterium) %>").html("<%= escape_javascript(the_view) %>");
+<% end %>

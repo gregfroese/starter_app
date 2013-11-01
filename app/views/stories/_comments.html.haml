@@ -1,8 +1,14 @@
-%ul
-  - @story.comments.each do |comment|
-    %li
-      %div.panel
-        %span= comment.message
-        %br
-        %span.story-comments--timestamp= comment.created_at.strftime("%Y-%m-%d %H:%M:%S")
+%div.comments-container
+  %ul
+    - @story.comments.each do |comment|
+      %li
+        %div
+          %span= comment.message
+          %span.story-comments--timestamp= comment.created_at.strftime("%Y-%m-%d %H:%M:%S")
+
+  - comment = Comment.new(story_id: @story.id)
+  = form_for(comment) do |f|
+    = f.text_field :message
+    = f.hidden_field :story_id
+    = f.submit "Add Comment", { class: "small button"}
 

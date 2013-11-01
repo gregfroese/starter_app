@@ -164,3 +164,7 @@ Then(/^I see the acceptance criteria on the show page$/) do
   visit project_story_path(@project, @story)
   page.should have_content "new acceptance criteria!"
 end
+
+Then(/^I see "(.*?)" on the page$/) do |text|
+  page.should have_content(text)
+end

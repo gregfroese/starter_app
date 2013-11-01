@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131030234853) do
+ActiveRecord::Schema.define(version: 20131101032112) do
 
   create_table "comments", force: true do |t|
     t.text     "message"
@@ -22,10 +22,11 @@ ActiveRecord::Schema.define(version: 20131030234853) do
 
   create_table "criteria", force: true do |t|
     t.text     "details"
-    t.boolean  "solved"
     t.integer  "story_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "dev_test"
+    t.boolean  "functional_test"
   end
 
   create_table "iterations", force: true do |t|
@@ -58,6 +59,7 @@ ActiveRecord::Schema.define(version: 20131030234853) do
     t.integer  "project_id",       default: 0
     t.integer  "position",         default: 0
     t.integer  "iteration_id",     default: 0
+    t.text     "notes"
   end
 
   create_table "taggings", force: true do |t|

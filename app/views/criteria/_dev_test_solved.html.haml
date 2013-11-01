@@ -1,0 +1,4 @@
+- if @criterium.dev_test
+  = render partial: "criteria/dev_test_resolved", locals: {criterium: criterium}
+- else
+  = render partial: "criteria/dev_test_unresolved", locals: {criterium: criterium}

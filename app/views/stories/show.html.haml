@@ -1,50 +1,55 @@
 %div.row
   %div.large-12.columns
-    %p{ :id => "notice"}= notice
+    - if !notice.blank?
+      %div.alert-box.success{ :id => "notice"}= notice
 
+%div.row
+  %div.large-2.columns
+    %br
     %div.story-text
+      %span.story-text In order to
+      = @story.goal
       %p
-        In order to
-        = @story.goal
-        %br
-        As a
-        = @story.stakeholder
-        %br
-        I want to
-        = @story.behavior
 
+      %span.story-text As a
+      = @story.stakeholder
+      %p
+      
+      %span.story-text I want to
+      = @story.behavior
+
+    %p
+    %div.story-values
+      %span.story-business-value 
+        BV:
+        = @story.business_value
+      %span.story-complexity-value 
+        CV:
+        = @story.complexity_value
+
+    %p
     %div.tags-container
       = @story.tag_list
+    
+    %P
+    %div.story-buttons
+      = link_to 'Edit', edit_project_story_path(@project, @story), { class: "small button"}
+      %br
+      = link_to 'Back', projects_path
 
-    %div.comments-container
-      %h4 Comments
-      - @story.comments.each do |comment|
-        %span.comments-container--time
-          = comment.created_at.localtime.strftime("%Y-%m-%d %H:%M:%S")
-        = comment.message
-        %br
+  %div.large-10.columns
+    %div.row
+      %div.large-12.columns
+        %div.story-details-container
+          %div.notes-container
+            
 
-      - comment = Comment.new(story_id: @story.id)
-      = form_for(comment) do |f|
-        = f.text_field :message
-        = f.hidden_field :story_id
-        = f.submit "Add Comment", { class: "small button"}
+          //= render partial: "comments"
 
-    %div.criteria-container
-      %h4 Acceptance Criteria
-      - @story.criteria.each do |criteria|
-        %span.criteria-container--time
-          = criteria.created_at.localtime.strftime("%Y-%m-%d %H:%M:%S")
-        = criteria.details
-        %br
+          = render partial: "acceptance_criteria"
 
-      - criterium = Criterium.new(story_id: @story.id)
-      = form_for(criterium) do |f|
-        = f.text_field :details
-        = f.hidden_field :story_id
-        = f.submit "Add Acceptance Criteria", { class: "small button"}
+          %h4 Notes
+          = @story.notes
 
 
-    = link_to 'Edit', edit_project_story_path(@project, @story), { class: "small button"}
-    %br
-    = link_to 'Back', projects_path
+          
