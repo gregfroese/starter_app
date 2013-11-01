@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
   after_save :create_iteration
-	has_many :stories, :order => "position"
+	has_many :stories, -> { order(:position) }
   has_many :iterations
 
   private
