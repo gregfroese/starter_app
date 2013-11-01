@@ -13,6 +13,7 @@ gem 'thin'
 gem "haml-rails"
 gem 'acts-as-taggable-on'
 gem 'acts_as_list'
+gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'

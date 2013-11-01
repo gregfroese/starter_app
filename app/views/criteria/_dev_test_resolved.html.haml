@@ -1,2 +1,2 @@
-Resolved
-= link_to "Mark Unresolved", criterium_path(criterium, criterium: {story_id: criterium.story_id, dev_test: false}), {class: "small alert button", id: dom_id(criterium), remote: true, method: "put"}
+%span.solved-icons--success
+  = link_to fa_icon("check-square"), criterium_path(criterium, criterium: {story_id: criterium.story_id, dev_test: false}), {class: "", title: "Click to mark criteria as unresolved", id: "dev_test_button_" + dom_id(criterium), remote: true, method: "put", rel: "This is a tooltip", title: "so is this"}

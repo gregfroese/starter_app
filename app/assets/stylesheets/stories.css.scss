@@ -136,3 +136,23 @@
 .criteria-container table {
   width: 100%;
 }
+
+.solved-icons--success {
+  font-size: 32px;
+  vertical-align: middle;
+  a {
+    color: green;
+  }
+}
+
+.solved-icons--failure {
+  font-size: 32px;
+  vertical-align: middle;
+  a {
+    color: red;
+  }
+}
+
+.solved-icons--failure {
+
+}
