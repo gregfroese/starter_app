@@ -1,0 +1,15 @@
+%tr
+  %td
+    = criterium.details
+  %td
+    %div{class: "dev_" + dom_id(criterium)}
+      - if !criterium.dev_test
+        = render partial: "criteria/dev_test_unresolved", locals: {criterium: criterium}
+      - else
+        = render partial: "criteria/dev_test_resolved", locals: {criterium: criterium}
+  %td
+    %div{class: "functional_" + dom_id(criterium)}
+      - if !criterium.functional_test
+        = render partial: "criteria/functional_test_unresolved", locals: {criterium: criterium}
+      - else
+        = render partial: "criteria/functional_test_resolved", locals: {criterium: criterium}

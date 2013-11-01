@@ -1,0 +1,3 @@
+<% the_view = render partial: 'criteria/criterium_details', locals: {criterium: @criterium} %>
+$("#acceptance-criteria tr:last").after("<%= escape_javascript(the_view) %>");
+$("#criterium_details").val("");

@@ -12,9 +12,7 @@ class CriteriaController < ApplicationController
   def create
     @criterium = Criterium.new(criterium_params)
 
-    if @criterium.save
-      redirect_to project_story_path(@project, @story), notice: 'Acceptance criteria successfully created.'
-    else
+    if !@criterium.save
       render action: 'new'
     end
   end

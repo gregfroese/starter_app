@@ -1,6 +1,6 @@
 %div.criteria-container
   %h4 Acceptance Criteria
-  %table.table
+  %table#acceptance-criteria.table
     %thead
       %tr
         %th Acceptance Criteria
@@ -8,24 +8,10 @@
         %th Functional Test Status
     %tbody
       - @story.criteria.each do |criterium|
-        %tr
-          %td
-            = criterium.details
-          %td
-            %div{class: "dev_" + dom_id(criterium)}
-              - if !criterium.dev_test
-                = render partial: "criteria/dev_test_unresolved", locals: {criterium: criterium}
-              - else
-                = render partial: "criteria/dev_test_resolved", locals: {criterium: criterium}
-          %td
-            %div{class: "functional_" + dom_id(criterium)}
-              - if !criterium.functional_test
-                = render partial: "criteria/functional_test_unresolved", locals: {criterium: criterium}
-              - else
-                = render partial: "criteria/functional_test_resolved", locals: {criterium: criterium}
+        = render partial: "criteria/criterium_details", locals: {criterium: criterium}
 
   - criterium = Criterium.new(story_id: @story.id)
-  = form_for(criterium) do |f|
+  = form_for(criterium, remote: true) do |f|
     = f.text_field :details
     = f.hidden_field :story_id
-    = f.submit "Add Acceptance Criteria", { class: "small button"}
+    = f.submit "Add Acceptance Criteria", { class: "small button", method: "post", remote: true}
