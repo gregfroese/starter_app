@@ -1,2 +1,2 @@
 %span.solved-icons--failure
-  = link_to fa_icon("times-circle"), criterium_path(criterium, criterium: {story_id: criterium.story_id, functional_test: true}), {class: "", id: "functional_test_button_" + dom_id(criterium), remote: true, method: "put", title: "Click to mark criteria as solved"}
+  = link_to fa_icon("thumbs-down"), criterium_path(criterium, criterium: {story_id: criterium.story_id, functional_test: true}), {class: "", id: "functional_test_button_" + dom_id(criterium), remote: true, method: "put", title: "Click to mark criteria as solved"}

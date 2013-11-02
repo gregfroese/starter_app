@@ -1,4 +1,4 @@
-%tr
+%tr{id: "criterium_details_" + criterium.id.to_s}
   %td
     = criterium.details
   %td
@@ -13,3 +13,6 @@
         = render partial: "criteria/functional_test_unresolved", locals: {criterium: criterium}
       - else
         = render partial: "criteria/functional_test_resolved", locals: {criterium: criterium}
+  %td
+    %div{id: "criteria_action_" + dom_id(criterium), class: "criteria-action"}
+      = link_to fa_icon("times-circle"), criterium_path(criterium, criterium: {story_id: criterium.story_id}), {method: "delete", remote: true, story_id: criterium.story_id, class: "", title: "Delete"}

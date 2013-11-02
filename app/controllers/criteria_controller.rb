@@ -22,6 +22,11 @@ class CriteriaController < ApplicationController
     @criterium.update(criterium_params)
   end
 
+  def destroy
+    @criterium = Criterium.find(params[:id])
+    @criterium.destroy
+  end
+
   private
   def criterium_params
     params.require(:criterium).permit(:story_id, :details, :dev_test, :functional_test)

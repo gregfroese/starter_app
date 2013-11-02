@@ -6,6 +6,7 @@
         %th Acceptance Criteria
         %th Dev Test Status
         %th Functional Test Status
+        %th Action
     %tbody
       - @story.criteria.each do |criterium|
         = render partial: "criteria/criterium_details", locals: {criterium: criterium}
