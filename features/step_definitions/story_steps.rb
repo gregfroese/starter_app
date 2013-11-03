@@ -69,6 +69,10 @@ When(/^I view the story$/) do
   visit project_story_path @project, @story
 end
 
+When(/^I view the manage page$/) do
+  visit manage_project_path @project
+end
+
 When(/^I enter a comment$/) do
   fill_in :comment_message, with: "My comment"
 end

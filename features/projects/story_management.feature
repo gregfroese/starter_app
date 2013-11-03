@@ -6,6 +6,6 @@ Feature:
 @javascript
 Scenario:
   Given I have a project with a list of stories
-  When I view the project page
-  And I find "#iteration-button-story" and click "Add to current iteration"
-  And I find "#iteration-button-story" and click "Remove from iteration"
+  When I view the manage page
+  And I find ".action-button" and click "Add to current iteration"
+  And I find ".action-button" and click "Remove from iteration"

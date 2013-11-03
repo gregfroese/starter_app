@@ -108,5 +108,7 @@ When(/^I view the project page$/) do
 end
 
 When(/^I find "(.*?)" and click "(.*?)"$/) do |element, link_or_button|
-  find(element + "_" + @first_story.id.to_s).click_on link_or_button
+  id = element + "_" + @first_story.id.to_s
+  puts "LOOKING FOR " + id
+  find(id).click_on link_or_button
 end

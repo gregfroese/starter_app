@@ -39,8 +39,9 @@
                 I want to:
               = story.behavior
           %div.large-2.columns
-            - if story.iteration_id != 0
-              = link_to 'Remove from iteration', removefromiteration_project_story_path(@project, {id: story.id}), { class: "small button", remote: true, method: "post", id: "story_button_" + story.id.to_s}
-            - else
-              = link_to 'Add to current iteration', addtoiteration_project_story_path(@project, {id: story.id}), { class: "small button", remote: true, method: "post", id: "story_button_" + story.id.to_s}
+            %span{class: "action-button_" + story.id.to_s}
+              - if story.iteration_id != 0
+                = link_to 'Remove from iteration', removefromiteration_project_story_path(@project, {id: story.id}), { class: "small button", remote: true, method: "post", id: "story_button_" + story.id.to_s}
+              - else
+                = link_to 'Add to current iteration', addtoiteration_project_story_path(@project, {id: story.id}), { class: "small button", remote: true, method: "post", id: "story_button_" + story.id.to_s}
 
