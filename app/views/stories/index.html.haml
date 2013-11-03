@@ -1,15 +1,15 @@
+= render partial: "shared/notice"
+
 %div.row
   %div.large-6.columns
-    %h3= @project.name
+    %h3= "Current Iteration: " + @project.name 
   %div.large-6.columns
     %br
-    = link_to "<-- Back to project listdafasf", projects_path
+    = link_to "<-- Back to project list", projects_path
 %div.row
   %div.large-12.columns
-
-    %h5 CURRENT ITERATION
     = link_to 'New story in iteration', new_project_story_path(@project, {iteration_id: @project.iterations.last.id}), { class: "small button"}
     = link_to 'Resort by priority', resetsortorder_project_path(@project, iteration_id: @project.iterations.last.id, redirect: project_path(@project)), { class: "small button", method: "post"}
 
     %div.story-container
-      = render partial: "story_list", locals: { stories: @iteration, list_type: "iteration_ul" }
+      = render partial: "projects/story_list", locals: { stories: @iteration, list_type: "iteration_ul" }

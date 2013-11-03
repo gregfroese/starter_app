@@ -1,5 +1,3 @@
-<% hide_project_list_link %>
-
 <div class="row">
 	<div class="large-12 columns">
 		<h1>Project list</h1>
@@ -8,13 +6,15 @@
 
 		<ul class="project-list">
 		<% @projects.each do |p| %>
-      <h3><%= link_to p.name, project_path(p) %></h3>
 			<li class="project_#{p.id}">
+        <h5><%= p.name %></h5>
         <div class="project-details">
           <ul class="project-details-list">
             <li>
+              <%= link_to "Manage Stories (#{p.stories.size})", manage_project_path(p) %>
+              <br />
               <span class="iteration-story-count iteration-story-count-project-#{p.id}">
-                Iteration stories: <%= p.iterations.last.stories.size %>
+                <%= link_to "Current Iteration: #{ p.iterations.last.stories.size }", project_stories_path(p) %>
               </span>
               <span class="iteration-count">(<%= p.iterations.size %> iterations)</span>
             </li>

@@ -4,6 +4,8 @@
 
 .story-list {
   list-style-type: none;
+  border-top: 2px solid #777;
+  border-bottom: 2px solid #777;
 }
 
 .story {
@@ -121,7 +123,7 @@
   text-align: right;
 }
 
-.story-text span {
+.story-text {
   font-weight: bold;
 }
 

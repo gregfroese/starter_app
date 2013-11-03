@@ -1,0 +1,30 @@
+ %li.row.story.ui-state-default.sortitem{id: "story_#{story.id}"}
+  %div.story-valuation.large-1.columns{class: "story-valuation status-#{story.status.name.split.join('-').downcase} large-1 columns"}
+    %div.story-valuation--bv= story.business_value
+    %div.story-valuation--cv= story.complexity_value
+
+  %div.story-details.large-11.columns
+    %div.row
+      %div.large-9.columns
+        %div.story-details--goal
+          %span
+            In order to:
+          = story.goal
+        %div.story-details--stakeholder
+          %span
+            As a:
+          = story.stakeholder
+        %div.story-details--behavior
+          %span
+            I want to:
+          = story.behavior
+      %div.large-3.columns
+        %div.story-details--comments
+          = story.comments.size
+    /# %div.story-details--edit-button= link_to 'Edit Story', edit_project_story_path(@project, story), { class: "small button"}
+    %div.story-details--edit-button= link_to 'Details', project_story_path(@project, story), { class: "small button"}
+    %div.story-details--iteration-button{id: "iteration-button-" + dom_id(story)}
+      - if story.iteration_id != 0
+        = link_to 'Remove from iteration', removefromiteration_project_story_path(@project, {id: story.id}), { class: "small button", remote: true, method: "post", id: "story_button_" + story.id.to_s}
+      - else
+        = link_to 'Add to current iteration', addtoiteration_project_story_path(@project, {id: story.id}), { class: "small button", remote: true, method: "post", id: "story_button_" + story.id.to_s}

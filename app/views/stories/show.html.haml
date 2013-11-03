@@ -1,7 +1,4 @@
-%div.row
-  %div.large-12.columns
-    - if !notice.blank?
-      %div.alert-box.success{ :id => "notice"}= notice
+= render partial: "shared/notice"
 
 %div.row
   %div.large-2.columns
@@ -35,7 +32,7 @@
     %div.story-buttons
       = link_to 'Edit', edit_project_story_path(@project, @story), { class: "small button"}
       %br
-      = link_to 'Back', projects_path
+      = link_to 'Back', project_path(@project)
 
   %div.large-10.columns
     %div.row

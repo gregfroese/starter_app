@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-	before_action :set_project, :only => [:show]
+	before_action :set_project, :only => [:show, :resetsortorder, :manage]
 
 	def index
 		@projects = Project.all
@@ -31,6 +31,25 @@ class ProjectsController < ApplicationController
 		end
 		render :nothing => true
 	end
+
+  def resetsortorder
+    stories = Story.storiesInIterationByPriority params[:iteration_id]
+    position = 1
+
+    stories.each do |story|
+      story.position = position
+      story.save
+      position = position + 1
+    end
+
+    redirect_to params[:redirect], notice: 'Stories successfully sorted.'
+
+  end	
+
+  def manage
+  	@iteration = @project.iterations.last.stories
+    @icebox = @project.stories - @iteration
+  end
 
 	private
 

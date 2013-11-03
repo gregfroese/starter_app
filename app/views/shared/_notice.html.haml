@@ -1,0 +1,4 @@
+%div.row
+  %div.large-12.columns
+    - if !notice.blank?
+      %div.alert-box.success{ :id => "notice"}= notice

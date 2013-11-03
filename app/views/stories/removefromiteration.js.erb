@@ -1,3 +1,7 @@
-$("#icebox_ul").append($("#<%= dom_id(@story) %>"));
-$("#story_button_<%= @story.id.to_s%>").attr("href", "<%= addtoiteration_project_story_path(@project, {id: @story.id}) %>");
-$("#story_button_<%= @story.id.to_s%>").text("Add to current iteration");
+<% if params[:move] == 1 %>
+  $("#icebox_ul").append($("#<%= dom_id(@story) %>"));
+  $("#story_button_<%= @story.id.to_s%>").attr("href", "<%= addtoiteration_project_story_path(@project, {id: @story.id}) %>");
+  $("#story_button_<%= @story.id.to_s%>").text("Add to current iteration");
+<% else %>
+  $("#<%= dom_id(@story)%>").remove();
+<% end %>

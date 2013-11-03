@@ -5,12 +5,13 @@ StarterApp::Application.routes.draw do
   resources :projects do
     member do
       post "sortorder"
+      post "resetsortorder"
+      get "manage"
     end
     resources :stories do
       collection do
         get "current"
         get "icebox"
-        post "resetsortorder"
       end
       member do
         post "addtoiteration"

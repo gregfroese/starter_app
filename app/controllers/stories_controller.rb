@@ -2,6 +2,10 @@ class StoriesController < ApplicationController
   before_action :set_story, only: [:show, :edit, :update, :destroy]
   before_action :set_project
 
+  def index
+    @iteration = @project.iterations.last.stories
+  end
+
   def new
     @story = Story.new(iteration_id: params[:iteration_id])
   end
@@ -51,23 +55,11 @@ class StoriesController < ApplicationController
     @story.save
   end
 
-  def resetsortorder
-    stories = Story.storiesInIterationByPriority params[:iteration_id]
-    position = 1
-
-    stories.each do |story|
-      story.position = position
-      story.save
-      position = position + 1
-    end
-
-    redirect_to project_path @project, notice: 'Stories successfully sorted.'
-
-  end
-
   private
     def set_story
-      @story = Story.find(params[:id])
+      if params[:id]
+        @story = Story.find(params[:id])
+      end
     end
 
     def set_project

@@ -20,7 +20,20 @@ class Story < ActiveRecord::Base
   belongs_to :status
   belongs_to :iteration
   has_many :comments
-  has_many :criteria, class_name: "Criterium"
+  has_many :criteria, class_name: "Criterium" do
+    def dev_test_solved
+      where("dev_test = true")
+    end
+    def dev_test_unsolved
+      where("dev_test = false")
+    end
+    def functional_test_solved
+      where("functional_test = true")
+    end
+    def functional_test_unsolved
+      where("functional_test = false")
+    end
+  end
 
   def self.allByPriority
     Story.all.sort_by(&:priority).reverse
