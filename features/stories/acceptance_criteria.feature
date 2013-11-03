@@ -10,3 +10,13 @@ Scenario:
   And I add acceptance criteria
   And I click "Add Acceptance Criteria"
   Then I see the acceptance criteria on the show page
+
+Scenario:
+  Given status records exist
+  And a story exists
+  When I view the story page
+  And I add acceptance criteria
+  And I click "Add Acceptance Criteria"
+  Then I see the acceptance criteria on the show page
+  And I add a criteria comment
+  Then I see my comment on the show page

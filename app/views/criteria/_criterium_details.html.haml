@@ -1,6 +1,9 @@
 %tr{id: "criterium_details_" + criterium.id.to_s}
   %td
     = criterium.details
+    %span.criteria-comments
+      %span{class: "criteria-comments-count_#{criterium.id.to_s}"}= criterium.comments.size.to_s 
+      = link_to_function fa_icon("microphone"), "$('#criteria_comment_#{criterium.id.to_s}').toggle();"
   %td
     %div{class: "dev_" + dom_id(criterium)}
       - if !criterium.dev_test
@@ -16,3 +19,7 @@
   %td
     %div{id: "criteria_action_" + dom_id(criterium), class: "criteria-action"}
       = link_to fa_icon("times-circle"), criterium_path(criterium, criterium: {story_id: criterium.story_id}), {method: "delete", remote: true, story_id: criterium.story_id, class: "", title: "Delete"}
+  %tr{id: "criteria_comment_#{criterium.id.to_s}", style: "display: none;"}
+    %td{colspan: 10}
+      %div.comments
+        = render partial: "criteria/comments", locals: {criterium: criterium}

@@ -172,3 +172,12 @@ end
 Then(/^I see "(.*?)" on the page$/) do |text|
   page.should have_content(text)
 end
+
+Then(/^I add a criteria comment$/) do
+  
+end
+
+Then(/^I see my comment on the show page$/) do
+  visit project_story_path(@project, @story)
+  page.should have_content "new criteria comment"
+end

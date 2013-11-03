@@ -1,0 +1,9 @@
+%ul{id: "criterium_comments_list_" + criterium.id.to_s}
+  - criterium.comments.each do |comment|
+    = render partial: "comments/comment_detail", locals: {comment: comment}
+
+- comment = Comment.new(criterium_id: criterium.id)
+= form_for(comment, remote: true) do |f|
+  = f.text_field :message, class: "comment-box"
+  = f.hidden_field :criterium_id, value: criterium.id
+  = f.submit "Add Comment", { class: "small button", method: "post", remote: true}

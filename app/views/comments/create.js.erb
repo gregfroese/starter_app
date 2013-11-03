@@ -1,0 +1,8 @@
+<% if !params[:comment][:message].blank? %>
+  <% the_view = render partial: 'comments/comment_detail', locals: {comment: @comment} %>
+  $("#criterium_comments_list_<%= @comment.criterium_id %>").append("<%= escape_javascript(the_view) %>");
+  // $("#criterium_details").val("");
+  $(".comment-box").val("");
+  $(".criteria-comments-count_<%= @comment.criterium_id.to_s %>").text("<%= @comment.criterium.comments.size %>");
+<% end %>
+
