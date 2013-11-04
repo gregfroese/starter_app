@@ -14,6 +14,10 @@ gem "haml-rails"
 gem 'acts-as-taggable-on'
 gem 'acts_as_list'
 gem 'font-awesome-rails'
+gem 'omniauth'
+gem 'omniauth-ldap'
+gem 'omniauth-github'
+gem 'omniauth-twitter'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
@@ -23,6 +27,11 @@ group :development, :test do
   gem 'debugger'
   gem 'mysql2'
   gem 'selenium-webdriver'
+  # gem 'pry'
+  # gem 'pry-remote'
+  # gem 'pry-doc'
+  # gem 'pry-rails'
+  # gem 'pry-debugger'
 end
 
 group :test do

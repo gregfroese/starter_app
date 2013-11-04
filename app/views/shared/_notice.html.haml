@@ -2,3 +2,5 @@
   %div.large-12.columns
     - if !notice.blank?
       %div.alert-box.success{ :id => "notice"}= notice
+    - if !alert.blank?
+      %div.alert-box.alert{ :id => "alert"}= alert

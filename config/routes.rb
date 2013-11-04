@@ -24,6 +24,12 @@ StarterApp::Application.routes.draw do
   resources :criteria
   resources :criteria_comments
 
+  match "/auth/:provider/callback" => "sessions#create", via: [:get, :post]
+  match "/signout" => "sessions#destroy", :as => :signout, via: [:get, :post]
+  get "/auth/failure" => "sessions#failure"
+  get "/ldap/welcome" => "ldap#welcome"
+  post "/ldap/login" => "sessions#ldap_login"
+  
   # post "projects/:project_id/sortorder" =>  "projects#sortorder"
   # get "projects/:project_id/sortorder" =>  "projects#sortorder"
 

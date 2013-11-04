@@ -5,6 +5,23 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+
+  <div class="row header">
+    <div class="large-12 columns">
+      <%= render partial: "shared/notice" %>
+      <div id="user_nav">
+        <% if current_user %>
+          Welcome, <%= current_user.name %>!
+          <%= link_to "Sign Out", signout_path %>
+        <% else %>
+          <%= link_to "Sign in with Windows", "/ldap/welcome" %>
+          <%= link_to "Sign in with Twitter", "/auth/twitter" %>
+          <%= link_to "Sign in with Github", "/auth/github" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
 </head>
 <body>
 
