@@ -1,4 +1,4 @@
-%ul{id: "criterium_comments_list_" + criterium.id.to_s}
+%ul.criteria-comments-list{id: "criterium_comments_list_" + criterium.id.to_s}
   - criterium.comments.each do |comment|
     = render partial: "comments/comment_detail", locals: {comment: comment}
 
