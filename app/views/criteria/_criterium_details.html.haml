@@ -1,6 +1,7 @@
 %tr{id: "criterium_details_" + criterium.id.to_s}
   %td
     = criterium.details
+  %td
     %span.criteria-comments
       %span{class: "criteria-comments-count_#{criterium.id.to_s}"}= criterium.comments.size.to_s 
       = link_to_function fa_icon("microphone"), "$('#criteria_comment_#{criterium.id.to_s}').toggle();"

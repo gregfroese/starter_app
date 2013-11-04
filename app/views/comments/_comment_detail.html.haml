@@ -1,3 +1,4 @@
 %li
+  %span.comment-time= comment.created_at.localtime.strftime("%Y-%m-%d %H:%M:%S")
+  %br
   = comment.message
-  = comment.created_at
