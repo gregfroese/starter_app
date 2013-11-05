@@ -217,6 +217,7 @@ GEM
       multi_json (~> 1.0)
       rubyzip (~> 1.0.0)
       websocket (~> 1.0.4)
+    settingslogic (2.0.9)
     shoulda-matchers (2.4.0)
       activesupport (>= 3.0.0)
     sprockets (2.10.0)
@@ -288,6 +289,7 @@ DEPENDENCIES
   rspec-rails (~> 2.0)
   sass-rails (~> 4.0.0)
   selenium-webdriver
+  settingslogic
   shoulda-matchers
   therubyracer
   thin

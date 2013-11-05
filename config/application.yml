@@ -1,0 +1,22 @@
+# you must restart Rails for these values to be updated
+defaults: &defaults
+  ldap:
+    host: 1.1.1.1
+    port: 389
+    base: LDAPBASE
+    domain: domain
+    method: :simple
+  auth:
+    twitter: false
+    github: false
+    windows: false
+
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
