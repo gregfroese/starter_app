@@ -14,9 +14,12 @@
           Welcome, <%= current_user.name %>!
           <%= link_to "Sign Out", signout_path %>
         <% else %>
-          <%= link_to "Sign in with Windows", "/ldap/welcome" %>
-          <%= link_to "Sign in with Twitter", "/auth/twitter" %>
-          <%= link_to "Sign in with Github", "/auth/github" %>
+          Sign in:
+          <span class="login-icons">
+            <%= link_to fa_icon("windows"), "/ldap/welcome" %>
+            <%= link_to fa_icon("twitter"), "/auth/twitter" %>
+            <%= link_to fa_icon("github"), "/auth/github" %>
+          </div>
         <% end %>
       </div>
     </div>
