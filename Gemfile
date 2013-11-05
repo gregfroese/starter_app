@@ -20,6 +20,10 @@ gem 'omniauth-github'
 gem 'omniauth-twitter'
 gem 'cancan'
 gem 'settingslogic'
+gem 'capistrano'
+gem 'capistrano-ext'
+gem 'capistrano_colors'
+gem 'rvm-capistrano'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
