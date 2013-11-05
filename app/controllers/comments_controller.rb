@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  authorize_resource
+  
   def create
     if !params[:comment][:message].blank?
       @comment = Comment.create(comment_params)
@@ -9,6 +11,5 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:criterium_id, :message)
   end
-
 
 end

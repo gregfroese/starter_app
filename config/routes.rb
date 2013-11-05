@@ -1,6 +1,7 @@
 StarterApp::Application.routes.draw do
   get "comments/create"
-  root 'projects#index'
+  root 'welcome#index'
+  get "/unauthorized" => "welcome#unauthorized"
 
   resources :projects do
     member do

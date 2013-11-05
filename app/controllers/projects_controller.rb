@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
-	before_action :set_project, :only => [:show, :resetsortorder, :manage]
+  authorize_resource
+  before_action :set_project, :only => [:show, :resetsortorder, :manage]
 
 	def index
 		@projects = Project.all

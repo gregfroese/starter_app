@@ -18,6 +18,7 @@ gem 'omniauth'
 gem 'omniauth-ldap'
 gem 'omniauth-github'
 gem 'omniauth-twitter'
+gem 'cancan'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'

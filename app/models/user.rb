@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  serialize :roles, Array
+  
   def self.create_with_omniauth(auth)
     create! do |user|
       user.provider = auth["provider"]
@@ -9,6 +11,12 @@ class User < ActiveRecord::Base
         # just try something if we aren't sure
         user.name = auth["user_info"]["name"]
       end
+    end
+  end
+
+  Ability.roles.each do |role|
+    define_method "#{role}_role?" do
+      self.roles.include?(role.to_s)
     end
   end
 end

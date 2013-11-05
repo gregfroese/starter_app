@@ -17,57 +17,49 @@
 <div class="row">
   <%= form_for([@project, @story]) do |f| %>
 
-  <div id="" class="large-8 columns story-form">
-    <%= f.label :goal, "In order to" %>
-    <%= f.text_area :goal, { placeholder: "<Goal>"} %><br />
+    <div id="" class="large-8 columns story-form">
+      <%= f.label :goal, "In order to" %>
+      <%= f.text_area :goal, { placeholder: "<Goal>"} %><br />
 
-    <%= f.label :stakeholder, "As a" %>
-    <%= f.text_field :stakeholder, { placeholder: "<Stakeholder>"} %><br />
+      <%= f.label :stakeholder, "As a" %>
+      <%= f.text_field :stakeholder, { placeholder: "<Stakeholder>"} %><br />
 
-    <%= f.label :behavior, "I want to" %>
-    <%= f.text_area :behavior, { placeholder: "<Behavior>" } %><br />
+      <%= f.label :behavior, "I want to" %>
+      <%= f.text_area :behavior, { placeholder: "<Behavior>" } %><br />
 
-    <%= f.label :notes, "Notes" %>
-    <%= f.text_area :notes, {placeholder: "Notes"} %>
+      <%= f.label :notes, "Notes" %>
+      <%= f.text_area :notes, {placeholder: "Notes"} %>
 
-    <fieldset>
-      <div class="row">
-        <div class="large-4 columns">
-          <%= f.label :business_value %>
-          <%= f.select :business_value, 0..5, {}, { class: 'small secondary radius button dropdown'} %>
+      <fieldset>
+        <div class="row">
+          <div class="large-4 columns">
+            <%= f.label :business_value %>
+            <%= f.select :business_value, 0..5, {}, { class: 'small secondary radius button dropdown'} %>
+          </div>
+
+          <div class="large-4 columns">
+            <%= f.label :complexity_value %>
+            <%= f.select :complexity_value, 0..5, {}, { class: 'small secondary radius button dropdown'} %>
+          </div>
+
+          <div class="large-4 columns">
+            <%= f.label :status_id %>
+            <%= f.select :status_id, Status.all.collect {|status| [status.name, status.id]}, {}, { class: 'small secondary radius button dropdown'} %>
+          </div>
         </div>
+      </fieldset>
 
-        <div class="large-4 columns">
-          <%= f.label :complexity_value %>
-          <%= f.select :complexity_value, 0..5, {}, { class: 'small secondary radius button dropdown'} %>
-        </div>
 
-        <div class="large-4 columns">
-          <%= f.label :status_id %>
-          <%= f.select :status_id, Status.all.collect {|status| [status.name, status.id]}, {}, { class: 'small secondary radius button dropdown'} %>
-        </div>
+      <%= f.label :tag_list %>
+      <%= f.text_field :tag_list %>
+
+      <%= f.hidden_field :project_id, value: @project.id %>
+      <%= f.hidden_field :iteration_id, value: @story.iteration_id %>
+      <div class="actions">
+        <br />
+        <%= f.submit "Save Story", { class: 'button' } %>
       </div>
-    </fieldset>
-
-
-    <%= f.label :tag_list %>
-    <%= f.text_field :tag_list %>
-
-    <%= f.hidden_field :project_id, value: @project.id %>
-    <%= f.hidden_field :iteration_id, value: @story.iteration_id %>
-    <div class="actions">
-      <br />
-      <%= f.submit "Save Story", { class: 'button' } %>
     </div>
-  </div>
-  <% if @story.id %>
-    <div id="" class="large-4 columns story-comments">
-      <%= render "comments" %>
-    </div>
-  <% end %>
-
-
-
   <% end %>
 
 </div>

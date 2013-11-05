@@ -1,4 +1,7 @@
 class LdapController < ApplicationController
+  authorize_resource :class => false
+  skip_authorization_check
+
   def welcome
   end
 
@@ -12,11 +15,9 @@ class LdapController < ApplicationController
       if !result
         config.logger.warn("Devise Simple LDAP: Could not find user '#{username}' by sAMAccountName. #{connection.get_operation_result.inspect}")
       end
-      debugger
 
       return self.new(username, result)
     else
-      debugger
       config.logger.info("Devise Simple LDAP: failed to bind user '#{username}': #{connection.get_operation_result}")
       return nil
     end

@@ -1,47 +1,44 @@
 %ul.sortme.story-list.ui-sortable{id: list_type}
-  - if stories.size == 0
-    %h6 No stories
-  - else
-    - stories.each do |story|
-      %li.story-list{id: "story_#{story.id}"}
-        %div.row
-          %div.large-1.columns.valuations
-            BV:
-            = story.business_value
-            %br
-            CV:
-            = story.complexity_value
-            %br
-            = link_to 'Details', project_story_path(@project, story), { class: "small button"}
-          %div.large-2.columns.story-activity
-            %span.dev-criteria
-              Dev:
-              = story.criteria.dev_test_solved.size
-              \/
-              = story.criteria.size
-            %br
-            %span.functional-criteria
-              Functional:
-              = story.criteria.functional_test_solved.size
-              \/
-              = story.criteria.size
-          %div.large-7.columns
-            %div.story-details--goal
-              %span.story-text
-                In order to:
-              = story.goal
-            %div.story-details--stakeholder
-              %span.story-text
-                As a:
-              = story.stakeholder
-            %div.story-details--behavior
-              %span.story-text
-                I want to:
-              = story.behavior
-          %div.large-2.columns
-            %span{class: "action-button_" + story.id.to_s}
-              - if story.iteration_id != 0
-                = link_to 'Remove from iteration', removefromiteration_project_story_path(@project, {id: story.id}), { class: "small button", remote: true, method: "post", id: "story_button_" + story.id.to_s}
-              - else
-                = link_to 'Add to current iteration', addtoiteration_project_story_path(@project, {id: story.id}), { class: "small button", remote: true, method: "post", id: "story_button_" + story.id.to_s}
+  - stories.each do |story|
+    %li.story-list{id: "story_#{story.id}"}
+      %div.row
+        %div.large-1.columns.valuations
+          BV:
+          = story.business_value
+          %br
+          CV:
+          = story.complexity_value
+          %br
+          = link_to 'Details', project_story_path(@project, story), { class: "small button"}
+        %div.large-2.columns.story-activity
+          %span.dev-criteria
+            Dev:
+            = story.criteria.dev_test_solved.size
+            \/
+            = story.criteria.size
+          %br
+          %span.functional-criteria
+            Functional:
+            = story.criteria.functional_test_solved.size
+            \/
+            = story.criteria.size
+        %div.large-7.columns
+          %div.story-details--goal
+            %span.story-text
+              In order to:
+            = story.goal
+          %div.story-details--stakeholder
+            %span.story-text
+              As a:
+            = story.stakeholder
+          %div.story-details--behavior
+            %span.story-text
+              I want to:
+            = story.behavior
+        %div.large-2.columns
+          %span{class: "action-button_" + story.id.to_s}
+            - if story.iteration_id != 0
+              = link_to 'Remove from iteration', removefromiteration_project_story_path(@project, {id: story.id, move: move}), { class: "small button", remote: true, method: "post", id: "story_button_" + story.id.to_s}
+            - else
+              = link_to 'Add to current iteration', addtoiteration_project_story_path(@project, {id: story.id, move: move}), { class: "small button", remote: true, method: "post", id: "story_button_" + story.id.to_s}
 

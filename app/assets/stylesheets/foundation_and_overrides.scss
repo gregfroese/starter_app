@@ -1010,4 +1010,8 @@
 
 
 @import 'foundation';
-.row {min-width:100% !important;}
+.row {
+  margin-left: 10px;
+  margin-right: 10px;
+  min-width:100% !important;
+}

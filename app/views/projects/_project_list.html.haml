@@ -1,0 +1,22 @@
+%div.row
+  %div.large-12.columns
+    %h3 Project list
+    = link_to "Create Project", new_project_path, {class: "small button"}
+
+    %ul.project-list
+      - projects.each do |p|
+        %li{id: "project_#{p.id}"}
+          %h5= p.name
+          %div.project-details
+            %div.project-details-list
+              = link_to "Manage Stories (#{p.stories.size})", manage_project_path(p)
+              %br
+              %span{class: "iteration-story-count iteration-story-count-project-#{p.id}"}
+                = link_to "Current Iteration: #{ p.iterations.last.stories.size }", project_stories_path(p)
+              %span{class: "iteration-count"}
+                (
+                = p.iterations.size
+                iterations)
+                %span.story-count
+                  Icebox: 
+                  = p.stories.size - p.iterations.last.stories.size

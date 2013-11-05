@@ -1,4 +1,6 @@
 class CriteriaController < ApplicationController
+  authorize_resource
+  
   before_action :set_story, only: [:new, :edit, :create]
   before_action :set_project, only: [:new, :edit, :create]
   

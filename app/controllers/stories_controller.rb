@@ -1,4 +1,6 @@
 class StoriesController < ApplicationController
+  authorize_resource
+  
   before_action :set_story, only: [:show, :edit, :update, :destroy]
   before_action :set_project
 
