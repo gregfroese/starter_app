@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
   after_save :create_iteration
+  belongs_to :user
 	has_many :stories, -> { order(:position) }
   has_many :iterations
 

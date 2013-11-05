@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131105161056) do
+ActiveRecord::Schema.define(version: 20131105193415) do
 
   create_table "comments", force: true do |t|
     t.text     "message"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "criterium_id"
+    t.integer  "user_id",      default: 0
   end
 
   create_table "criteria", force: true do |t|
@@ -27,6 +28,7 @@ ActiveRecord::Schema.define(version: 20131105161056) do
     t.datetime "updated_at"
     t.boolean  "dev_test"
     t.boolean  "functional_test"
+    t.integer  "user_id",         default: 0
   end
 
   create_table "iterations", force: true do |t|
@@ -39,6 +41,7 @@ ActiveRecord::Schema.define(version: 20131105161056) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id",    default: 0
   end
 
   create_table "statuses", force: true do |t|
@@ -60,6 +63,7 @@ ActiveRecord::Schema.define(version: 20131105161056) do
     t.integer  "position",         default: 0
     t.integer  "iteration_id",     default: 0
     t.text     "notes"
+    t.integer  "user_id",          default: 0
   end
 
   create_table "taggings", force: true do |t|

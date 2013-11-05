@@ -13,6 +13,7 @@ class CriteriaController < ApplicationController
 
   def create
     @criterium = Criterium.new(criterium_params)
+    @criterium.user = current_user
 
     if !@criterium.save
       render action: 'new'
@@ -31,7 +32,7 @@ class CriteriaController < ApplicationController
 
   private
   def criterium_params
-    params.require(:criterium).permit(:story_id, :details, :dev_test, :functional_test)
+    params.require(:criterium).permit(:story_id, :details, :dev_test, :functional_test, :user_id)
   end
 
   def set_story

@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
   serialize :roles, Array
+  has_many :projects
+  has_many :stories
+  has_many :comments
   
   def self.create_with_omniauth(auth)
     create! do |user|

@@ -19,6 +19,7 @@ class Story < ActiveRecord::Base
   belongs_to :project
   belongs_to :status
   belongs_to :iteration
+  belongs_to :user
   has_many :comments
   has_many :criteria, class_name: "Criterium" do
     def dev_test_solved

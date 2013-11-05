@@ -12,4 +12,4 @@
     = link_to 'Resort by priority', resetsortorder_project_path(@project, iteration_id: @project.iterations.last.id, redirect: project_path(@project)), { class: "small button", method: "post"}
 
     %div.story-container
-      = render partial: "story_list", locals: { stories: @iteration, list_type: "iteration_ul" }
+      = render partial: "story_list", locals: { stories: @iteration, list_type: "iteration_ul", move: 0 }

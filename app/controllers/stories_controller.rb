@@ -17,6 +17,7 @@ class StoriesController < ApplicationController
 
   def create
     @story = Story.new(story_params)
+    @story.user = current_user
 
     if @story.save
       redirect_to project_story_path(@project, @story), notice: 'Story was successfully created.'
@@ -69,6 +70,6 @@ class StoriesController < ApplicationController
     end
 
     def story_params
-      params.require(:story).permit(:goal, :stakeholder, :behavior, :business_value, :complexity_value, :status_id, :project_id, :tag_list, :position, :iteration_id, :notes)
+      params.require(:story).permit(:goal, :stakeholder, :behavior, :business_value, :complexity_value, :status_id, :project_id, :tag_list, :position, :iteration_id, :notes, :user_id)
     end
 end
