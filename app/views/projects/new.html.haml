@@ -1,0 +1,10 @@
+%div.row
+  %div.large-4.columns
+    &nbsp;
+  %div.large-4.columns
+    = form_for @project do |f| 
+      = f.label :name 
+      = f.text_field :name 
+      = f.submit
+  %div.large-4.columns
+    &nbsp;

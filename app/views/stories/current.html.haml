@@ -1,1 +1,1 @@
-= render "full_story_list"
+= render partial: "full_story_list", locals: {redirect: current_project_stories_path(@project)}

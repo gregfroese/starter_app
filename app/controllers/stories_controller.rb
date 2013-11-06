@@ -35,13 +35,13 @@ class StoriesController < ApplicationController
   end
 
   def current
-    project = Project.find(params[:project_id])
-    @stories = project.iterations.last.stories
+    @project = Project.find(params[:project_id])
+    @stories = @project.iterations.last.stories
   end
 
   def icebox
-    project = Project.find(params[:project_id])
-    @stories = project.stories - project.iterations.last.stories
+    @project = Project.find(params[:project_id])
+    @stories = @project.stories - @project.iterations.last.stories
   end
 
   def addtoiteration
