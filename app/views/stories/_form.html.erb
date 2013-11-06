@@ -19,13 +19,13 @@
 
     <div id="" class="large-8 columns story-form">
       <%= f.label :goal, "In order to" %>
-      <%= f.text_area :goal, { placeholder: "<Goal>"} %><br />
+      <%= f.text_area :goal, { placeholder: "<Goal>"} %>
 
       <%= f.label :stakeholder, "As a" %>
-      <%= f.text_field :stakeholder, { placeholder: "<Stakeholder>"} %><br />
+      <%= f.text_field :stakeholder, { placeholder: "<Stakeholder>"} %>
 
       <%= f.label :behavior, "I want to" %>
-      <%= f.text_area :behavior, { placeholder: "<Behavior>" } %><br />
+      <%= f.text_area :behavior, { placeholder: "<Behavior>" } %>
 
       <%= f.label :notes, "Notes" %>
       <%= f.text_area :notes, {placeholder: "Notes"} %>
@@ -49,17 +49,14 @@
         </div>
       </fieldset>
 
-
       <%= f.label :tag_list %>
       <%= f.text_field :tag_list %>
 
       <%= f.hidden_field :project_id, value: @project.id %>
       <%= f.hidden_field :iteration_id, value: @story.iteration_id %>
       <div class="actions">
-        <br />
-        <%= f.submit "Save Story", { class: 'button' } %>
+        <%= f.submit "Save Story", { class: 'small button' } %>
       </div>
     </div>
   <% end %>
-
 </div>

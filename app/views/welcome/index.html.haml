@@ -1,4 +1,4 @@
 %div.row
-  %div.large-12.colunns.welcome
-  - if current_user
-    = render partial: "projects/project_list", locals: {projects: @projects}
+  %div.large-6.columns
+    - if current_user
+      = render partial: "projects/project_list", locals: {projects: @projects}

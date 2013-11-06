@@ -1,8 +1,6 @@
 %div.row
   %div.large-12.columns
     %h3 Project list
-    = link_to "Create Project", new_project_path, {class: "small button"}
-
     %ul.project-list
       - projects.each do |p|
         %li{id: "project_#{p.id}"}
