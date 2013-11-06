@@ -1,5 +1,4 @@
 %div.row
   %div.large-12.colunns.welcome
-    %h1 Story Tracker
-    - if current_user
-      = render partial: "projects/project_list", locals: {projects: @projects}
+  - if current_user
+    = render partial: "projects/project_list", locals: {projects: @projects}
