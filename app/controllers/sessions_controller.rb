@@ -33,7 +33,13 @@ class SessionsController < ApplicationController
         return nil
       end
 
-      user = User.find_by_provider_and_name("ldap", username) || User.create(provider: "ldap", uid: username, name: username )
+      user = User.find_by_provider_and_name("ldap", username)
+      if !user
+        user = User.create(provider: "ldap", uid: username, name: username )
+        user.roles = ["user"]
+        user.save
+      end
+
       session[:user_id] = user.id
       redirect_to root_url, notice: 'Successfully signed in.' 
     else

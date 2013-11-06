@@ -15,8 +15,6 @@ class LdapController < ApplicationController
       if !result
         config.logger.warn("Devise Simple LDAP: Could not find user '#{username}' by sAMAccountName. #{connection.get_operation_result.inspect}")
       end
-
-      return self.new(username, result)
     else
       config.logger.info("Devise Simple LDAP: failed to bind user '#{username}': #{connection.get_operation_result}")
       return nil
