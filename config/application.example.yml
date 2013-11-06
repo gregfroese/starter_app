@@ -8,9 +8,12 @@ defaults: &defaults
     method: :simple
   auth:
     twitter: false
-    github: false
+    twitter_key: insert key
+    twitter_secret: insert secret
+    github: true
+    github_key: insert key
+    github_secret: insert secret
     windows: false
-
 
 development:
   <<: *defaults

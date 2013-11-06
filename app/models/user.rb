@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
       user.uid = auth["uid"]
       if auth["provider"] == "twitter"
         user.name = auth["info"]["nickname"]
+      elsif auth["provider"] == "github"
+        user.name = auth["info"]["nickname"]
       else
         # just try something if we aren't sure
         user.name = auth["user_info"]["name"]
