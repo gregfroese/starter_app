@@ -8,7 +8,7 @@ gem 'zurb-foundation', '~>4.0.0'
 gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'turbolinks'
+# gem 'turbolinks'
 gem 'thin'
 gem "haml-rails"
 gem 'acts-as-taggable-on'
