@@ -8,4 +8,7 @@ class WelcomeController < ApplicationController
 
   def unauthorized
   end
+
+  def options
+  end
 end

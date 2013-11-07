@@ -1,8 +1,8 @@
-%div.row
-  %div.large-6.columns
+%div.pure-g
+  %div.pure-u-1
     %h3= @project.name
-%div.row
-  %div.large-12.columns
+%div.pure-g
+  %div.pure-u-1
 
     %h5 CURRENT ITERATION
     = link_to 'New story in iteration', new_project_story_path(@project, {iteration_id: @project.iterations.last.id}), { class: "small button"}

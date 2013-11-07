@@ -1,43 +1,29 @@
-%div.sticky
-  %nav.top-bar
-    %ul.title-area
-      %li.name
-        %h1= link_to "Story Tracker", root_path
-      %li.toggle-topbar.menu-icon
-        = link_to "#", "Menu"
-
-    %section.top-bar-section
-      // Left nav section
-      %ul.left
-        %li.divider
-        %li.has-dropdown
-          = link_to "Projects", projects_path
-          %ul.dropdown
-            - Project.all.each do |project|
-              %li.has-dropdown
-                = link_to project.name, project_path(project)
-                %ul.dropdown
-                  %li= link_to "Manage stories", manage_project_path(project)
-                  %li= link_to "Current Iteration", current_project_stories_path(project)
-                  %li= link_to "Icebox Iteration", icebox_project_stories_path(project)
-        %li.divider
-        %li= link_to "New Project", new_project_path
-        %li.divider
-
-      %ul.right
-        %li.divider
-        %li.has-dropdown
-          - if current_user
-            = link_to current_user.name + " (#{current_user.provider})", ""
-            %ul.dropdown
-              %li= link_to "Logout", signout_path
-          - else
-            = link_to "Login", ""
-            %ul.dropdown
-              - if Settings.auth.windows
-                %li= link_to "Windows ", "/ldap/welcome"
-              - if Settings.auth.twitter
-                %li= link_to "Twitter ", "/auth/twitter"
-              - if Settings.auth.github
-                %li= link_to "Github ", "/auth/github"
-
+%div#horizontal-menu.pure-menu.pure-menu-open.pure-menu-horizontal
+  = link_to "Story Tracker", root_path, {class: "pure-menu-heading"}
+  %ul#std-menu-items{style: "z-index: 99;"}
+    - if current_user
+      %li
+        = link_to "Projects", projects_path
+        %ul
+          - Project.all.each do |project|
+            %li
+              = link_to project.name, "#"
+              %ul
+                %li= link_to "Manage stories",manage_project_path(project)
+                %li= link_to "Current Iteration", current_project_stories_path(project)
+                %li= link_to "Icebox Iteration", icebox_project_stories_path(project)
+      %li= link_to "New Project", new_project_path
+      %li
+        - if current_user
+          = link_to current_user.name + " (#{current_user.provider})", ""
+          %li= link_to "Logout", signout_path
+    - else
+      %li
+        = link_to "Login", welcome_options_path
+        %ul
+          - if Settings.auth.windows
+            %li= link_to "Windows ", "/ldap/welcome"
+          - if Settings.auth.twitter
+            %li= link_to "Twitter ", "/auth/twitter"
+          - if Settings.auth.github
+            %li= link_to "Github ", "/auth/github"

@@ -31,6 +31,7 @@ StarterApp::Application.routes.draw do
   match "/signout" => "sessions#destroy", :as => :signout, via: [:get, :post]
   get "/auth/failure" => "sessions#failure"
   get "/ldap/welcome" => "ldap#welcome"
+  get "/welcome/options" => "welcome#options"
   post "/ldap/login" => "sessions#ldap_login"
   
   # post "projects/:project_id/sortorder" =>  "projects#sortorder"

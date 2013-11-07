@@ -24,6 +24,8 @@ gem 'capistrano'
 gem 'capistrano-ext'
 gem 'capistrano_colors'
 gem 'rvm-capistrano'
+gem 'purecss-rails'
+gem 'yui-rails'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'

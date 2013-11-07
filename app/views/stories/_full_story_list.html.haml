@@ -1,5 +1,5 @@
-%div{:class => "row"}
-  %div{:class => "large-12 columns"}
+%div{:class => "pure-g"}
+  %div{:class => "pure-u-1"}
     %h1= @project.name
 
     - if Rails.application.routes.recognize_path(request.path)[:action] == "icebox"

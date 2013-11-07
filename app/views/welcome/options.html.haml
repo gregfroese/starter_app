@@ -1,0 +1,16 @@
+%div.pure-g
+  %div.pure-u-1-3
+    &nbsp;
+  %div.pure-u-1-3
+    %h3 Choose your login option
+    - if Settings.auth.windows
+      %p
+      = link_to "Windows ", "/ldap/welcome"
+    - if Settings.auth.twitter
+      %p
+      = link_to "Twitter ", "/auth/twitter"
+    - if Settings.auth.github
+      %p
+      = link_to "Github ", "/auth/github"
+  %div.pure-u-1-3
+    &nbsp;
