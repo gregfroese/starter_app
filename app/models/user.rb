@@ -1,8 +1,11 @@
 class User < ActiveRecord::Base
   serialize :roles, Array
   has_many :projects
-  has_many :stories
+  has_many :created_stories, class_name: "Story", foreign_key: "user_id"
   has_many :comments
+
+  has_many :assignments
+  has_many :stories, through: :assignments
   
   def self.create_with_omniauth(auth)
     create! do |user|

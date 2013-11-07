@@ -17,6 +17,8 @@ StarterApp::Application.routes.draw do
       member do
         post "addtoiteration"
         post "removefromiteration"
+        post "adduser"
+        delete "removeuser"
       end
     end
   end

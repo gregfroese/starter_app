@@ -189,3 +189,12 @@
   padding-top: 10px;
   float: right;
 }
+
+ul.users {
+  list-style-type: none;
+  padding-left: 10px;
+}
+
+.delete-link a {
+  color: red;
+}

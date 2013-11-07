@@ -26,7 +26,10 @@
     %div.tags-container
       = @story.tag_list
     
-    %P
+    %p
+    = render partial: "assign_users", locals: {project: @project, story: @story}
+
+    %p
     %div.story-buttons
       = link_to 'Edit', edit_project_story_path(@project, @story), { class: "small button"}
       %br

@@ -1,0 +1,2 @@
+<% the_view = render partial: 'assign_users', locals: {project: @project, story: @story} %>
+$(".assigned-users").html("<%= escape_javascript(the_view) %>");

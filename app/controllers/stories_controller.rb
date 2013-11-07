@@ -17,7 +17,7 @@ class StoriesController < ApplicationController
 
   def create
     @story = Story.new(story_params)
-    @story.user = current_user
+    @story.user_id = current_user.id
 
     if @story.save
       redirect_to project_story_path(@project, @story), notice: 'Story was successfully created.'
@@ -56,6 +56,20 @@ class StoriesController < ApplicationController
     @story.iteration_id = 0
     @story.position = 0
     @story.save
+  end
+
+  def adduser
+    @story = Story.find(params[:id])
+    @user = User.find(params[:user_id])
+    @story.users << @user
+    @project = @story.project
+  end
+
+  def removeuser
+    @story = Story.find(params[:id])
+    @user = User.find(params[:user_id])
+    @story.users.delete(@user)
+    @project = @story.project
   end
 
   private

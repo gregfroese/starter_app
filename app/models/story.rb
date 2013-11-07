@@ -16,10 +16,13 @@ class Story < ActiveRecord::Base
     less_than_or_equal_to: 5
   }
 
+  has_many :assignments
+  has_many :users, through: :assignments
+
   belongs_to :project
   belongs_to :status
   belongs_to :iteration
-  belongs_to :user
+  belongs_to :creator, class_name: "User", foreign_key: "user_id"
   has_many :comments
   has_many :criteria, class_name: "Criterium" do
     def dev_test_solved
