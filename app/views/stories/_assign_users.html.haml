@@ -4,16 +4,16 @@
     %ul.users
       - story.users.each do |user|
         %li
-          = user.name
+          = user.login_name
           %span.delete-link
             = link_to fa_icon("times-circle"), removeuser_project_story_path(project, story, user_id: user.id), {method: "delete", remote: true, class: "", title: "Delete"}
   - else
-    %span No users assigned
+    %h5 No users assigned
 
   %p
 
   - available_users = User.all - story.users
   - if available_users.size > 0
     = form_tag adduser_project_story_path(project, story), remote: true do
-      = select_tag("user_id", options_from_collection_for_select(available_users, 'id', 'name'), {class: "small secondary radius button dropdown"})
+      = select_tag("user_id", options_from_collection_for_select(available_users, 'id', 'login_name'), {class: "small secondary radius button dropdown"})
       = submit_tag "Add user", {class: "small button", method: "post", remote: true}

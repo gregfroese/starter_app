@@ -22,6 +22,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def login_name
+    name + " / " + provider
+  end
+
   Ability.roles.each do |role|
     define_method "#{role}_role?" do
       self.roles.include?(role.to_s)

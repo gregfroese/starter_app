@@ -61,7 +61,9 @@ class StoriesController < ApplicationController
   def adduser
     @story = Story.find(params[:id])
     @user = User.find(params[:user_id])
-    @story.users << @user
+    if !@story.users.include? @user
+      @story.users << @user
+    end
     @project = @story.project
   end
 

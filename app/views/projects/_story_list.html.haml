@@ -1,6 +1,6 @@
 %ul.sortme.story-list.ui-sortable{id: list_type}
   - stories.each do |story|
-    %li.story-list{id: "story_#{story.id}"}
+    %li.story-list{id: "story_#{story.id}", class: "status-#{story.status.name.downcase}"}
       %div.row
         %div.large-1.columns.valuations
           BV:
@@ -22,6 +22,10 @@
             = story.criteria.functional_test_solved.size
             \/
             = story.criteria.size
+          %br
+          %ul.users
+            - story.users.each do |user|
+              = user.login_name
         %div.large-7.columns
           %div.story-details--goal
             %span.story-text
@@ -41,4 +45,6 @@
               = link_to 'Remove from iteration', removefromiteration_project_story_path(@project, {id: story.id, move: move}), { class: "small button", remote: true, method: "post", id: "story_button_" + story.id.to_s}
             - else
               = link_to 'Add to current iteration', addtoiteration_project_story_path(@project, {id: story.id, move: move}), { class: "small button", remote: true, method: "post", id: "story_button_" + story.id.to_s}
+          %br
+          = story.status.name
 
