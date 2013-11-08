@@ -1,7 +1,7 @@
 %ul.sortme.story-list.ui-sortable{id: list_type}
   - stories.each do |story|
     %li.story-list{id: "story_#{story.id}", class: "status-#{story.status.name.downcase}"}
-      %div.pure-g
+      %div.pure-g-r
         %div.pure-u-1-12.valuations
           BV:
           = story.business_value

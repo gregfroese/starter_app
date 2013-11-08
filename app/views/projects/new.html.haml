@@ -1,10 +1,12 @@
-%div.pure-g
+%div.pure-g-r
   %div.pure-u-1-3
     &nbsp;
   %div.pure-u-1-3
-    = form_for @project do |f| 
+    %p
+    = form_for @project, html: {class: "pure-form"} do |f| 
       = f.label :name 
-      = f.text_field :name 
-      = f.submit
+      = f.text_field :name, {class: "pure-input-2-3"}
+      %p
+      = f.submit "Create project", {class: "pure-button pure-button-success"}
   %div.pure-u-1-3
     &nbsp;

@@ -1,4 +1,4 @@
-%div.pure-g
+%div.pure-g-r
   %div.pure-u-1-6
     %div.story-buttons
       = link_to 'Edit', edit_project_story_path(@project, @story), { class: "pure-button pure-button-primary"}
@@ -34,7 +34,7 @@
     = render partial: "assign_users", locals: {project: @project, story: @story}
 
   %div.pure-u-5-6
-    %div.pure-g
+    %div.pure-g-r
       %div.pure-u-1
         %div.story-details-container
           %div.notes-container

@@ -1,7 +1,7 @@
-%div.pure-g
+%div.pure-g-r
   %div.pure-u-1-2
     %h3= "Current Iteration: " + @project.name 
-%div.pure-g
+%div.pure-g-r
   %div.pure-u-1
     = link_to 'New story in iteration', new_project_story_path(@project, {iteration_id: @project.iterations.last.id}), { class: "pure-button pure-button-success"}
     = link_to 'Resort by priority', resetsortorder_project_path(@project, iteration_id: @project.iterations.last.id, redirect: project_path(@project)), { class: "pure-button pure-button-secondary", method: "post"}

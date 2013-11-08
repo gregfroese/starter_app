@@ -1,7 +1,7 @@
-%div.pure-g
+%div.pure-g-r
   %div.pure-u-1
     %h2= "Manage Stories for " + @project.name
-%div.pure-g
+%div.pure-g-r
   %div.pure-u-1
 
     %h3 CURRENT ITERATION
@@ -11,7 +11,7 @@
     %div.story-container
       = render partial: "story_list", locals: { stories: @iteration, list_type: "iteration_ul", move: 1 }
 
-%div.pure-g
+%div.pure-g-r
   %div.pure-u-1
     %h3 ICEBOX
     = link_to 'New story in icebox', new_project_story_path(@project, {iteration_id: 0}), { class: "pure-button pure-button-success"}
