@@ -6,13 +6,14 @@
   = javascript_include_tag "application", "data-turbolinks-track" => true
   = csrf_meta_tags
 
+  
+%body
   %div.pure-g
-    %div.pure-u-1
+    %div.pure-u-1.container
       = render partial: "shared/top_menu"
       = render partial: "shared/notice"
       %div#user_nav
         - if !current_user
           - if !Settings.auth.windows and !Settings.auth.twitter and !Settings.auth.github
             No authentication is configured.  Please edit config/application.yml
-%body
-  = yield
+      = yield

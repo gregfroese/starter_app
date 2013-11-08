@@ -3,7 +3,8 @@
     = render partial: "comments/comment_detail", locals: {comment: comment}
 
 - comment = Comment.new(criterium_id: criterium.id)
-= form_for(comment, remote: true) do |f|
-  = f.text_field :message, class: "comment-box"
+= form_for(comment, remote: true, html: {class: "pure-form"}) do |f|
+  = f.text_field :message, class: "comment-box pure-input-2-3" 
   = f.hidden_field :criterium_id, value: criterium.id
-  = f.submit "Add Comment", { class: "small button", method: "post", remote: true}
+  %P
+  = f.submit "Add Comment", { class: "pure-button-small pure-button-success pure-button", method: "post", remote: true}

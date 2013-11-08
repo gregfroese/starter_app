@@ -1,6 +1,6 @@
 %div.criteria-container
   %h4 Acceptance Criteria
-  %table#acceptance-criteria.table
+  %table#acceptance-criteria.pure-table.pure-table-bordered.custom-table
     %thead
       %tr
         %th Acceptance Criteria
@@ -10,11 +10,18 @@
         %th User
         %th Action
     %tbody
+      - odd = false
       - @story.criteria.each do |criterium|
-        = render partial: "criteria/criterium_details", locals: {criterium: criterium}
+        - if odd
+          - odd = false
+        - else
+          - odd = true
+        = render partial: "criteria/criterium_details", locals: {criterium: criterium, odd: odd}
 
+  %p
   - criterium = Criterium.new(story_id: @story.id)
   = form_for(criterium, remote: true) do |f|
-    = f.text_field :details
+    = f.text_area :details, size: "80%"
+    %p
     = f.hidden_field :story_id
-    = f.submit "Add Acceptance Criteria", { class: "small button", method: "post", remote: true}
+    = f.submit "Add Acceptance Criteria", { class: "pure-button pure-button-primary", method: "post", remote: true}

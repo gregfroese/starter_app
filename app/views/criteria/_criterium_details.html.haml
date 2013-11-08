@@ -1,4 +1,10 @@
-%tr{id: "criterium_details_" + criterium.id.to_s}
+- odd ||= false
+- if odd
+  - stripe_class = "pure-table-odd"
+- else
+  - stripe_class = ""
+
+%tr{id: "criterium_details_" + criterium.id.to_s, class: stripe_class}
   %td
     = criterium.details
   %td
