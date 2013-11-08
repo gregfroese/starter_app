@@ -1,4 +1,4 @@
-Given(/^a project exists$/) do
+  Given(/^a project exists$/) do
   @project = Project.create(name: "my_project")
 end
 
@@ -174,10 +174,12 @@ Then(/^I see "(.*?)" on the page$/) do |text|
 end
 
 Then(/^I add a criteria comment$/) do
-  
+  find(".criteria-comments").find(".fa-microphone").click
+  fill_in "comment[message]", with: "new criteria comment"
 end
 
 Then(/^I see my comment on the show page$/) do
   visit project_story_path(@project, @story)
+  find(".criteria-comments").find(".fa-microphone").click
   page.should have_content "new criteria comment"
 end

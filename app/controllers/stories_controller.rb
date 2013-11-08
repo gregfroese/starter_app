@@ -1,5 +1,5 @@
 class StoriesController < ApplicationController
-  authorize_resource
+  authorize_resource unless Settings.auth.bypass_all 
   
   before_action :set_story, only: [:show, :edit, :update, :destroy]
   before_action :set_project

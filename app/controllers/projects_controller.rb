@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  authorize_resource
+  authorize_resource unless Settings.auth.bypass_all
   before_action :set_project, :only => [:show, :resetsortorder, :manage]
 
 	def index
