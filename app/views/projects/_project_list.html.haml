@@ -1,20 +1,32 @@
-%div.pure-g
+<<<<<<< HEAD
+%div.pure-g-r
   %div.pure-u-1
-    %h3 Project list sdfs
-    %ul.project-list
-      - projects.each do |p|
-        %li{id: "project_#{p.id}"}
-          %h5= p.name
-          %div.project-details
-            %div.project-details-list
-              = link_to "Manage Stories (#{p.stories.size})", manage_project_path(p)
-              %br
-              %span{class: "iteration-story-count iteration-story-count-project-#{p.id}"}
-                = link_to "Current Iteration: #{ p.iterations.last.stories.size }", project_stories_path(p)
-              %span{class: "iteration-count"}
-                (
-                = p.iterations.size
-                iterations)
-                %span.story-count
-                  Icebox: 
-                  = p.stories.size - p.iterations.last.stories.size
+    %h3 Project list
+    = link_to "Create project", new_project_path, {class: "pure-button pure-button-success"}
+    %p
+    %table.pure-table.custom-table
+      %thead
+        %tr
+          %th Name
+          %th Manage Stories
+          %th Current Iteration
+          %th Icebox
+          %th Previous Iterations
+      %tbody
+        - odd = false
+        - projects.each do |p|
+          - if odd
+            - odd = false
+            - stripe_class = "pure-table-odd"
+          - else
+            - odd = true
+            - stripe_class = ""
+
+          %tr{class: stripe_class, id: "project_#{p.id}"}
+            %td= p.name
+            %td= link_to "#{p.stories.size} stories", manage_project_path(p), {class: "pure-button pure-button-success"}
+            %td= link_to "#{p.iterations.last.stories.size} stories", project_stories_path(p), {class: "pure-button pure-button-success"}
+            %td= link_to "#{p.stories.size - p.iterations.last.stories.size} stories", icebox_project_stories_path(p), {class: "pure-button pure-button-success"}
+            %td
+              = p.iterations.size - 1
+              iterations

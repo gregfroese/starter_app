@@ -14,6 +14,7 @@
 
   - available_users = User.all - story.users
   - if available_users.size > 0
-    = form_tag adduser_project_story_path(project, story), remote: true do
-      = select_tag("user_id", options_from_collection_for_select(available_users, 'id', 'login_name'), {class: "small secondary radius button dropdown"})
-      = submit_tag "Add user", {class: "small button", method: "post", remote: true}
+    = form_tag adduser_project_story_path(project, story), remote: true, class: "pure-form" do
+      = select_tag("user_id", options_from_collection_for_select(available_users, 'id', 'login_name'), {class: "pure-input-2-3"})
+      %p
+      = submit_tag "Add user", {class: "pure-button pure-button-xsmall pure-button-success", method: "post", remote: true}

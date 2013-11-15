@@ -1,5 +1,5 @@
 class CriteriaController < ApplicationController
-  authorize_resource
+  authorize_resource unless Settings.auth.bypass_all 
   
   before_action :set_story, only: [:new, :edit, :create]
   before_action :set_project, only: [:new, :edit, :create]

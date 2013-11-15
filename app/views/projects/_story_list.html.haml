@@ -1,7 +1,7 @@
 %ul.sortme.story-list.ui-sortable{id: list_type}
   - stories.each do |story|
     %li.story-list{id: "story_#{story.id}", class: "status-#{story.status.name.downcase}"}
-      %div.pure-g
+      %div.pure-g-r
         %div.pure-u-1-12.valuations
           BV:
           = story.business_value
@@ -9,8 +9,8 @@
           CV:
           = story.complexity_value
           %br
-          = link_to 'Details', project_story_path(@project, story), { class: "small button"}
-        %div.pure-u-2-12.story-activity
+          = link_to 'Details', project_story_path(@project, story), { class: "pure-button pure-button-success"}
+        %div.pure-u-1-6.story-activity
           %span.dev-criteria
             Dev:
             = story.criteria.dev_test_solved.size
@@ -39,12 +39,12 @@
             %span.story-text
               I want to:
             = story.behavior
-        %div.pure-u-2-12
+        %div.pure-u-1-6
           %span{class: "action-button_" + story.id.to_s}
             - if story.iteration_id != 0
-              = link_to 'Remove from iteration', removefromiteration_project_story_path(@project, {id: story.id, move: move}), { class: "small button", remote: true, method: "post", id: "story_button_" + story.id.to_s}
+              = link_to 'Remove from iteration', removefromiteration_project_story_path(@project, {id: story.id, move: move}), { class: "pure-button pure-button-secondary", remote: true, method: "post", id: "story_button_" + story.id.to_s}
             - else
-              = link_to 'Add to current iteration', addtoiteration_project_story_path(@project, {id: story.id, move: move}), { class: "small button", remote: true, method: "post", id: "story_button_" + story.id.to_s}
-          %br
-          = story.status.name
+              = link_to 'Add to current iteration', addtoiteration_project_story_path(@project, {id: story.id, move: move}), { class: "pure-button pure-button-secondary", remote: true, method: "post", id: "story_button_" + story.id.to_s}
+          %p
+            = story.status.name
 

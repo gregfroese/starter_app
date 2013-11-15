@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  authorize_resource
+  authorize_resource unless Settings.auth.bypass_all 
   
   def create
     if !params[:comment][:message].blank?
