@@ -16,3 +16,6 @@
 //= require yui
 //= require_tree .
 
+$(function() {
+    $( ".datepicker" ).datepicker();
+  });

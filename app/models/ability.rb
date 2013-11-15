@@ -38,6 +38,7 @@ class Ability
       can :manage, Story
       can :manage, Criterium
       can :manage, Comment
+      can :manage, Iteration
     end
   end
 

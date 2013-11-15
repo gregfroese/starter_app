@@ -35,3 +35,7 @@ config/database.yml
 
 #Ignore application settings
 config/application.yml
+
+Capfile
+config/deploy.rb
+config/deploy

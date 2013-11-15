@@ -1,0 +1,25 @@
+%h1 
+  Iterations
+= link_to "New Iteration", new_project_iteration_path(@project), {class: "pure-button pure-button-success"}
+%p
+
+%table.pure-table
+  %thead
+    %th Name
+    %th Current
+    %th Start Date
+    %th End Date
+    %th # Stories
+    %th Action
+  %tbody
+    - @project.iterations.each do |iteration|
+      %tr
+        %td= iteration.name
+        %td
+          - if iteration.current
+            Yes
+        %td= iteration.start_date
+        %td= iteration.end_date
+        %td= iteration.stories.size
+        %td= link_to "Make Current", set_current_project_iteration_path(@project, iteration), {method: :put, class: "pure-button pure-button-success"}
+

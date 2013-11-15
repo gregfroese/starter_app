@@ -1,0 +1,21 @@
+= form_for [@project, @iteration], html: {class: "pure-form"} do |f| 
+  - if @iteration.errors.any?
+    %div#error_explanation
+      %h2
+        = pluralize(@iteration.errors.count, "error")
+        prohibited this status from being saved:
+
+      %ul
+        - @iteration.errors.full_messages.each do |msg| 
+          %li= msg 
+  %p
+    = f.label :name 
+    = f.text_field :name, {class: "pure-input-2-3"}
+  %p
+    = f.label :start_date 
+    = f.text_field :start_date, {class: "pure-input-2-3 datepicker"}
+  %p
+    = f.label :end_date 
+    = f.text_field :end_date, {class: "pure-input-2-3 datepicker"}
+  %div.actions
+    = f.submit "Create Iteration", {class: "pure-button pure-button-success"}

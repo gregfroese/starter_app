@@ -21,6 +21,11 @@ StarterApp::Application.routes.draw do
         delete "removeuser"
       end
     end
+    resources :iterations do
+      member do
+        put :set_current
+      end
+    end
   end
   resources :statuses
   resources :comments
