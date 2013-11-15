@@ -6,10 +6,6 @@
   %div.story-details.pure-u-11-12
     %div.pure-g
       %div.pure-u-3-4
-        %div.story-details--goal
-          %span
-            In order to:
-          = story.goal
         %div.story-details--stakeholder
           %span
             As a:
@@ -18,6 +14,11 @@
           %span
             I want to:
           = story.behavior
+        %div.story-details--goal
+          %span
+            So that:
+          = story.goal
+        
       %div.pure-u-1-4
         %div.story-details--comments
           = story.comments.size

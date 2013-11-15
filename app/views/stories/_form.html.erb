@@ -21,14 +21,6 @@
       <table class="story-form pure-table">
         <tr>
           <td>
-            <%= f.label :goal, "In order to" %>
-          </td>
-          <td>
-            <%= f.text_area :goal, { placeholder: "<Goal>", class: "pure-input-2-3"} %>
-          </td>
-        </tr>
-        <tr>
-          <td>
             <%= f.label :stakeholder, "As a" %>
           </td>
           <td>
@@ -41,6 +33,14 @@
           </td>
           <td>
             <%= f.text_area :behavior, { placeholder: "<Behavior>" } %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= f.label :goal, "So that" %>
+          </td>
+          <td>
+            <%= f.text_area :goal, { placeholder: "<Goal>", class: "pure-input-2-3"} %>
           </td>
         </tr>
         <tr>

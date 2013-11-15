@@ -27,10 +27,6 @@
             - story.users.each do |user|
               = user.login_name
         %div.pure-u-7-12
-          %div.story-details--goal
-            %span.story-text
-              In order to:
-            = story.goal
           %div.story-details--stakeholder
             %span.story-text
               As a:
@@ -39,6 +35,11 @@
             %span.story-text
               I want to:
             = story.behavior
+          %div.story-details--goal
+            %span.story-text
+              So that:
+            = story.goal
+          
         %div.pure-u-1-6
           %span{class: "action-button_" + story.id.to_s}
             - if story.iteration_id != 0

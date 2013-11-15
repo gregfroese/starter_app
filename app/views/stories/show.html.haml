@@ -6,16 +6,14 @@
       = link_to 'Back', project_path(@project)
     %br
     %div
-      %span.story-text In order to
-      = @story.goal
-      %p
-
       %span.story-text As a
       = @story.stakeholder
       %p
-      
       %span.story-text I want to
       = @story.behavior
+      %p
+      %span.story-text So that
+      = @story.goal
 
     %p
     %div.story-values
