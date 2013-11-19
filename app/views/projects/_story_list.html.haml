@@ -2,14 +2,14 @@
   - stories.each do |story|
     %li.story-list{id: "story_#{story.id}", class: "status-#{story.status.name.downcase}"}
       %div.pure-g-r
+        %div.pure-u-1-12.valuations.story-id
+          = link_to story.id, project_story_path(@project, story)
         %div.pure-u-1-12.valuations
           BV:
           = story.business_value
           %br
           CV:
           = story.complexity_value
-          %br
-          = link_to 'Details', project_story_path(@project, story), { class: "pure-button pure-button-success"}
         %div.pure-u-1-6.story-activity
           %span.dev-criteria
             Dev:
@@ -26,7 +26,7 @@
           %ul.users
             - story.users.each do |user|
               = user.login_name
-        %div.pure-u-7-12
+        %div.pure-u-1-2
           %div.story-details--stakeholder
             %span.story-text
               As a:

@@ -1,10 +1,12 @@
 %div.pure-g-r
   %div.pure-u-1-6
+    %div.story-id
+      = @story.id
+      %br
     %div.story-buttons
+      = link_to 'Back', project_path(@project), { class: "pure-button pure-button-error"}
       = link_to 'Edit', edit_project_story_path(@project, @story), { class: "pure-button pure-button-primary"}
       %p
-      = link_to 'Back', project_path(@project)
-    %br
     %div
       %span.story-text As a
       = @story.stakeholder

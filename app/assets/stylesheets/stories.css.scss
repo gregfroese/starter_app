@@ -70,6 +70,16 @@
   padding: 0 30px 0px 0;
 }
 
+.story-id {
+  font-size: 50px;
+  color: #777;
+  text-align: center;
+}
+.story-id a {
+  text-decoration: none;
+  color: black;
+}
+
 // Story Statuses
 .status-unstarted {
   background-color: #F7C26D;
