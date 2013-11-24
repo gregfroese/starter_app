@@ -1,7 +1,11 @@
+= render partial: "stories/sub_menu", locals: {project: @project}
+
 %h1
   Iteration:
   - if @iteration
     = @iteration.name
+    - if @iteration == @project.iterations.current
+      (current)
     - stories = @iteration.stories
   - else
     Icebox

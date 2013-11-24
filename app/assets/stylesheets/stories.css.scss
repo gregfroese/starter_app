@@ -262,3 +262,15 @@ ul.users {
 .pure-button-secondary {
   background: rgb(66, 184, 221); /* this is a light blue */
 }
+
+.sub-menu-container {
+  padding: 8px;
+  background-color: #777;
+  span {
+    color: white;
+    font-weight: bold;
+    font-size: 22px;
+    padding-right: 25px;
+    font-variant:small-caps;
+  }
+}
