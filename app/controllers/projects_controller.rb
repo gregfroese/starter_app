@@ -14,7 +14,9 @@ class ProjectsController < ApplicationController
 		@project = Project.new(project_params)
     @project.user = current_user
 		@project.save!
+    iteration = Iteration.create(project: @project, current: true, name: "Default")
 		redirect_to projects_url
+
 	end
 
 	def show
