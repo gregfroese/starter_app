@@ -1,0 +1,10 @@
+%h1
+  Iteration:
+  - if @iteration
+    = @iteration.name
+    - stories = @iteration.stories
+  - else
+    Icebox
+    - stories = @project.stories.icebox
+
+= render partial: "projects/story_list", locals: {iteration: @iteration, stories: stories, list_type: "iteration_ul", move: 0}

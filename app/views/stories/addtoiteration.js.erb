@@ -1,3 +1,6 @@
 $("#iteration_ul").append($("#<%= dom_id(@story) %>"));
 $("#story_button_<%= @story.id.to_s%>").attr("href", "<%= removefromiteration_project_story_path(@project, {id: @story.id, move: params[:move]}) %>");
 $("#story_button_<%= @story.id.to_s%>").text("Remove from iteration");
+
+<% the_view = render partial: 'total_values', locals: {iteration: @iteration} %>
+$(".total-values").html("<%= escape_javascript(the_view) %>");

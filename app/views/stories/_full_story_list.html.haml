@@ -2,26 +2,15 @@
   %div{:class => "pure-u-1"}
     %h1= @project.name
 
-    - if Rails.application.routes.recognize_path(request.path)[:action] == "icebox"
-      - iteration_id = 0
-    - elsif Rails.application.routes.recognize_path(request.path)[:action] == "current"
-      - iteration_id = @project.iterations.last.id
-
     = link_to 'New Story', new_project_story_path(@project), { class: "pure-button pure-button-success"}
-    = link_to 'Reset Sort Order', resetsortorder_project_path(@project, iteration_id: iteration_id, redirect: redirect), { class: "pure-button pure-button-secondary", method: "post"}
+    = link_to 'Reset Sort Order', resetsortorder_project_path(@project, iteration_id: iteration.id, redirect: redirect), { class: "pure-button pure-button-secondary", method: "post"}
 
-    - if Rails.application.routes.recognize_path(request.path)[:action] == "icebox"
-      = link_to  "View Current Iteration", current_project_stories_url(@project), { class: "pure-button pure-button-secondary" }
-    - elsif Rails.application.routes.recognize_path(request.path)[:action] == "current"
-      = link_to  "View Icebox", icebox_project_stories_url(@project), { class: "pure-button pure-button-secondary" }
-
-    %br
-
+    %p
     .row
       .large-1.columns
         %input{type: "hidden", id: "project_id", name: "project_id", value: "#{@project.id}"}
       .large-10.columns
         %div.story-list
-          = render partial: "projects/story_list", locals: {stories: @stories, list_type: "iteration_ul", move: 0}
+          = render partial: "projects/story_list", locals: {iteration: iteration, stories: @stories, list_type: "iteration_ul", move: 0}
       .large-1.columns
         &nbsp;

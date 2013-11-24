@@ -86,9 +86,11 @@
       </table>
 
       <%= f.hidden_field :project_id, value: @project.id %>
-      <%= f.hidden_field :iteration_id, value: @story.iteration_id %>
+
       <div class="actions">
         <p>
+          <%= check_box_tag :include_in_current_iteration %> Include in current iteration?
+          <p />
           <%= f.submit "Save Story", { class: 'pure-button' } %>
         <p>
       </div>

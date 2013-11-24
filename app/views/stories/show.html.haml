@@ -4,6 +4,11 @@
       = @story.id
       %br
     %div.story-buttons
+      - if @story.iteration_id != 0
+        - back_path = project_iteration_path(@project, @story.iteration)
+      - else
+        - back_path = project_iteration_path(@project, Iteration.new(id: 0))
+
       = link_to 'Back', project_path(@project), { class: "pure-button pure-button-error"}
       = link_to 'Edit', edit_project_story_path(@project, @story), { class: "pure-button pure-button-primary"}
       %p

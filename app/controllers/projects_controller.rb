@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
 	end
 
 	def show
-    @iteration = @project.iterations.last.stories
+    @iteration = @project.iterations.current.stories
     @icebox = @project.stories - @iteration
 	end
 
@@ -49,8 +49,8 @@ class ProjectsController < ApplicationController
   end	
 
   def manage
-  	@iteration = @project.iterations.last.stories
-    @icebox = @project.stories - @iteration
+  	@iteration = @project.iterations.current.stories
+    @icebox = @project.stories.icebox
   end
 
 	private

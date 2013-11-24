@@ -30,6 +30,15 @@ class IterationsController < ApplicationController
     end
   end
 
+  def show
+    @project = Project.find(params[:project_id])
+    if params[:id] != "0"
+      @iteration = Iteration.find(params[:id])
+    else
+      @iteration = nil
+    end
+  end
+
   private
     def iteration_params
       params.require(:iteration).permit(:name, :start_date, :end_date, :project_id)

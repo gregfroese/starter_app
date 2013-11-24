@@ -1,3 +1,7 @@
+- if iteration
+  %div.total-values
+    = render partial: "stories/total_values", locals: {iteration: iteration}
+
 %ul.sortme.story-list.ui-sortable{id: list_type}
   - stories.each do |story|
     %li.story-list{id: "story_#{story.id}", class: "status-#{story.status.name.downcase}"}
@@ -10,6 +14,12 @@
           %br
           CV:
           = story.complexity_value
+          %br
+          %span.story-calculated-value
+            - if story.complexity_value > 0
+              %b= (story.business_value.to_f / story.complexity_value.to_f).round(2)
+            - else
+              %b= story.business_value
         %div.pure-u-1-6.story-activity
           %span.dev-criteria
             Dev:

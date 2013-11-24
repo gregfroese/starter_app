@@ -51,4 +51,7 @@ class Story < ActiveRecord::Base
     return business_value if complexity_value == 0
     (business_value.to_f / complexity_value.to_f).to_f
   end
+
+  def include_in_current_iteration
+  end
 end

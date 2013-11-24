@@ -1,6 +1,6 @@
 %div.pure-g-r
   %div.pure-u-1
-    %h3 Project list
+    %h1 Project list
     = link_to "Create project", new_project_path, {class: "pure-button pure-button-success"}
     %p
     %table.pure-table.custom-table
@@ -24,9 +24,9 @@
           %tr{class: stripe_class, id: "project_#{p.id}"}
             %td= p.name
             %td= link_to "#{p.stories.size} stories", manage_project_path(p), {class: "pure-button pure-button-success"}
-            %td= link_to "#{p.iterations.last.stories.size} stories", project_stories_path(p), {class: "pure-button pure-button-success"}
-            %td= link_to "#{p.stories.size - p.iterations.last.stories.size} stories", icebox_project_stories_path(p), {class: "pure-button pure-button-success"}
+            %td= link_to "#{p.iterations.current.stories.size} stories", project_stories_path(p), {class: "pure-button pure-button-success"}
+            %td= link_to "#{p.stories.size - p.iterations.current.stories.size} stories", icebox_project_stories_path(p), {class: "pure-button pure-button-success"}
             %td
               = link_to "Manage", project_iterations_path(p), {class: "pure-button pure-button-success"}
-              = p.iterations.size - 1
+              = p.iterations.size
               iterations

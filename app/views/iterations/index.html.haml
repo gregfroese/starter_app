@@ -12,6 +12,14 @@
     %th # Stories
     %th Action
   %tbody
+    %tr
+      %td Icebox
+      %td
+      %td
+      %td
+      %td= link_to @project.stories.icebox.size, project_iteration_path(@project, Iteration.new(id: 0))
+      %td
+
     - @project.iterations.each do |iteration|
       %tr
         %td= iteration.name
@@ -20,6 +28,6 @@
             Yes
         %td= iteration.start_date
         %td= iteration.end_date
-        %td= iteration.stories.size
+        %td= link_to iteration.stories.size, project_iteration_path(@project, iteration)
         %td= link_to "Make Current", set_current_project_iteration_path(@project, iteration), {method: :put, class: "pure-button pure-button-success"}
 
