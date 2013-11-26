@@ -45,6 +45,7 @@ describe Story do
       @stories = []
       @status_one = Status.create(name: "nothing")
       @project = Project.create(name: "name")
+      iteration = Iteration.create(name: "cur it", current: true, project_id: @project.id)
       @stories << Story.create(
         goal: "goal",
         stakeholder: "stakeholder",
@@ -87,7 +88,7 @@ describe Story do
         complexity_value: 2,
         project_id: @project.id,
         position: 0,
-        iteration_id: @project.iterations.last.id
+        iteration_id: @project.iterations.current.id
       )
 
       sorted = Story.storiesInIterationByPriority 0
