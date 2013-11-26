@@ -1,5 +1,0 @@
-%div.sub-menu-container
-  %span.project-title= @project.name
-  = link_to "Current Iteration", project_iteration_path(project, project.iterations.current), {class: "pure-button"}
-  = link_to "Icebox", project_iteration_path(project, Iteration.new(id: 0)), {class: "pure-button"}
-  = link_to "Iterations", project_iterations_path(project), {class: "pure-button"}

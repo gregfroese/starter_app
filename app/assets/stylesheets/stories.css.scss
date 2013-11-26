@@ -274,3 +274,15 @@ ul.users {
     font-variant:small-caps;
   }
 }
+.site-title {
+  text-transform: uppercase;
+  a {
+    text-decoration: none;
+    font-size: 14px;
+    color: white;
+  }
+}
+
+.menu-right {
+  float: right;
+}
