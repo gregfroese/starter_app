@@ -2,18 +2,16 @@
   %div.pure-u-1
     %h2= "Manage Stories for " + @project.name
 %div.pure-g-r
-  %div.pure-u-1
-
-    %h3 CURRENT ITERATION
-    = link_to 'New Story', new_project_story_path(@project, {}), { class: "pure-button pure-button-success"}
+  %div.pure-u-1-2.manage-story-list
+    %p= @project.iterations.current.name
     = link_to 'Resort by priority', resetsortorder_project_path(@project, iteration_id: @project.iterations.current.id, redirect: manage_project_path(@project)), { class: "pure-button pure-button-secondary", method: "post"}
 
     %div.story-container
-      = render partial: "story_list", locals: { iteration: @project.iterations.current, stories: @iteration, list_type: "iteration_ul", move: 1 }
+      / = render partial: "story_list", locals: { iteration: @project.iterations.current, stories: @iteration, list_type: "iteration_ul", move: 1 }
+      = render partial: "manage_story_list", locals: { iteration: @project.iterations.current, stories: @iteration, list_type: "iteration_ul", move: 1 }
 
-%div.pure-g-r
-  %div.pure-u-1
-    %h3 ICEBOX
+  %div.pure-u-1-2.manage-story-list
+    %p Icebox
     = link_to 'Resort by priority', resetsortorder_project_path(@project, redirect: manage_project_path(@project)), { class: "pure-button pure-button-secondary", method: "post"}
     %div.story-container
-      = render partial: "story_list", locals: { iteration: nil, stories: @icebox, list_type: "icebox_ul", move: 1  }
+      / = render partial: "story_list", locals: { iteration: nil, stories: @icebox, list_type: "icebox_ul", move: 1  }

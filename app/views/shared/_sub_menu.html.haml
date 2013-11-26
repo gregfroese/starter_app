@@ -3,13 +3,15 @@
 
   - if current_user and @project
     %span.project-title= @project.name
+    = link_to fa_icon("edit"), new_project_story_path(@project, {}), { class: "pure-button pure-button-success", title: "New Story"}
+    = link_to fa_icon("sort-amount-desc"), manage_project_path(@project), {class: "pure-button", title: "Manage Stories"}
     = link_to "Current Iteration", project_iteration_path(@project, @project.iterations.current), {class: "pure-button"}
     = link_to "Icebox", project_iteration_path(@project, Iteration.new(id: 0)), {class: "pure-button"}
     = link_to "Iterations", project_iterations_path(@project), {class: "pure-button"}
   %div.menu-right
     - if current_user
       = link_to current_user.name + " (#{current_user.provider})", "", {class: "pure-button"}
-      = link_to "Logout", signout_path, {class: "pure-button pure-button-error"}
+      = link_to fa_icon("sign-out"), signout_path, {class: "pure-button pure-button-error", title: "Sign Out"}
     - else
       / = link_to "Login", welcome_options_path
       - if Settings.auth.windows
