@@ -3,21 +3,16 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $('.sortme').sortable
-    axis: 'y'
-    cursor: 'crosshair'
+  $(".sortme").sortable(
+    connectWith: ".connected-sortable"
+    cursor: "crosshair"
     opacity: 0.6
     scroll: true
     update: ->
       project_id = $("#project_id").val()
-      $.post("/projects/" + project_id + "/sortorder", $(this).sortable('serialize'))
-
-  $("#iteration-switch input").click (event) ->
-    project_id = $("#project_id").val()
-    $.ajax "/projects/" + project_id + "/" + $(event.target).data("view"),
-      complete: ->
-        console.log "complete"
-    
+      iteration_id = $(this).attr('iteration')
+      $.post "/projects/" + project_id + "/sortorder?iteration_id=" + iteration_id, $(this).sortable("serialize")
+  ).disableSelection()
 
 
       

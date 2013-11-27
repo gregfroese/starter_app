@@ -1,16 +1,22 @@
-%ul.sortme.story-list.ui-sortable{id: list_type}
+%ul.sortme.story-list.ui-sortable.connected-sortable{id: list_type, iteration: iteration_id}
   - stories.each do |story|
     %li.story-list{id: "story_#{story.id}", class: "status-#{story.status.name.downcase}"}
       %div.pure-g-r
-        %div.pure-u-1-6
-          = story.business_value 
-          \/
-          = story.complexity_value 
+        %div.pure-u-1-12
+          %span.story-id
+            = link_to story.id, project_story_path(@project, story)
+        %div.pure-u-1-12
+          %span.story-values
+            = story.business_value 
+            \/
+            = story.complexity_value 
 
         %div.pure-u-5-6
           %b As a(n):
           = story.stakeholder
+          %br
           %b I want to:
           = story.behavior
+          %br
           %b So that:
           = story.goal

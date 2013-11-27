@@ -26,10 +26,12 @@ class ProjectsController < ApplicationController
 
 	def sortorder
 		# project = Project.find(params["project_id"])
+    iteration_id = params[:iteration_id]
 		position = 1
 		params["story"].each do |id|
 			story = Story.find id
 			story.position = position
+      story.iteration_id = iteration_id
 			story.save
 			position = position + 1
 		end
