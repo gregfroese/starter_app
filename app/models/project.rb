@@ -8,7 +8,7 @@ class Project < ActiveRecord::Base
       where("current = true").first
     end
     def manageable
-      where("current = false" )
+      where("current = false" ).order("icebox desc, name")
     end
     def icebox
       where("icebox = true").first

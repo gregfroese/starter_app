@@ -21,9 +21,9 @@ class StoriesController < ApplicationController
 
     puts "========= seting iteration id to: " + @project.iterations.icebox.id.to_s
     @story.iteration_id = @project.iterations.icebox.id 
-    if !params[:iteration_id].blank?
-      puts "========= seting iteration id to: " + params[:iteration_id].to_s
-      @story.iteration_id = params[:iteration_id]
+    if !params[:story][:iteration_id].blank?
+      puts "========= seting iteration id to: " + params[:story][:iteration_id].to_s
+      @story.iteration_id = params[:story][:iteration_id]
     end
 
     if @story.save
