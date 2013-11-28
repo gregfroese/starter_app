@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   authorize_resource unless Settings.auth.bypass_all
-  before_action :set_project, :only => [:show, :resetsortorder, :manage]
+  before_action :set_project, :only => [:show, :resetsortorder, :manage, :stories_per_iteration]
 
 	def index
 		@projects = Project.all
@@ -26,6 +26,9 @@ class ProjectsController < ApplicationController
 
 	def sortorder
 		# project = Project.find(params["project_id"])
+    @business_value = 0
+    @complexity_value = 0
+
     iteration_id = params[:iteration_id]
 		position = 1
 		params["story"].each do |id|
@@ -34,6 +37,8 @@ class ProjectsController < ApplicationController
       story.iteration_id = iteration_id
 			story.save
 			position = position + 1
+      @business_value += story.business_value
+      @complexity_value += story.complexity_value
 		end
 		render :nothing => true
 	end
@@ -57,6 +62,18 @@ class ProjectsController < ApplicationController
     @icebox = @project.stories.icebox
   end
 
+  def stories_per_iteration
+    if params[:iteration_id] != "0"
+      @iteration = Iteration.find params[:iteration_id]
+      @stories = @iteration.stories
+    else
+      @iteration = Iteration.new(id: 0, name: "Icebox")
+      @stories = @project.stories.icebox
+    end
+
+    @total_values = calculate_total_values @stories
+  end
+
 	private
 
 	def set_project
@@ -66,5 +83,18 @@ class ProjectsController < ApplicationController
 	def project_params
 		params.required(:project).permit(:name, :user_id)
 	end
+
+  def calculate_total_values stories
+    business_value = 0
+    complexity_value = 0
+
+    stories.each do |story|
+      business_value += story.business_value
+      complexity_value += story.complexity_value
+    end
+
+    [business_value: business_value, complexity_value: complexity_value]
+  end
+
 	
 end

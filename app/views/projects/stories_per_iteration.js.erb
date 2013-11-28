@@ -1,0 +1,17 @@
+<% the_view = render partial: 'manage_story_list', locals: {iteration: @iteration, stories: @stories, list_type: "iteration_ul", move: 1, iteration_id: @iteration.id} %>
+$(".story-container-right-side").html("<%= escape_javascript(the_view) %>");
+
+$(function() {
+  return $(".sortme").sortable({
+    connectWith: ".connected-sortable",
+    cursor: "crosshair",
+    opacity: 0.6,
+    scroll: true,
+    update: function() {
+      var iteration_id, project_id;
+      project_id = $("#project_id").val();
+      iteration_id = $(this).attr('iteration');
+      return $.post("/projects/" + project_id + "/sortorder?iteration_id=" + iteration_id, $(this).sortable("serialize"));
+    }
+  }).disableSelection();
+});

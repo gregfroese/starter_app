@@ -4,16 +4,17 @@
 %div.pure-g-r
   %div.pure-u-1-2.manage-story-list
     = hidden_field_tag :project_id, @project.id
-    %p= @project.iterations.current.name
-    = link_to 'Resort by priority', resetsortorder_project_path(@project, iteration_id: @project.iterations.current.id, redirect: manage_project_path(@project)), { class: "pure-button pure-button-secondary", method: "post"}
 
     %div.story-container
-      / = render partial: "story_list", locals: { iteration: @project.iterations.current, stories: @iteration, list_type: "iteration_ul", move: 1 }
+      %p= @project.iterations.current.name + " (current)"
       = render partial: "manage_story_list", locals: { iteration: @project.iterations.current, stories: @iteration, list_type: "iteration_ul", move: 1, iteration_id: @project.iterations.current.id}
 
   %div.pure-u-1-2.manage-story-list
-    %p Icebox
-    = link_to 'Resort by priority', resetsortorder_project_path(@project, redirect: manage_project_path(@project)), { class: "pure-button pure-button-secondary", method: "post"}
+    - iterations = [Iteration.new(id: 0, name: "Icebox")]
+    - iterations += @project.iterations.manageable
+    = form_tag(stories_per_iteration_project_path, {remote: true, method: :get})
+    = select_tag "iteration_id", options_from_collection_for_select(iterations, "id", "name")
+    = submit_tag "Switch Iteration"
     %div.story-container
-      / = render partial: "story_list", locals: { iteration: nil, stories: @icebox, list_type: "icebox_ul", move: 1  }
-      = render partial: "manage_story_list", locals: { iteration: nil, stories: @icebox, list_type: "icebox_ul", move: 1, iteration_id: 0  }
+      %div.story-container-right-side
+        = render partial: "manage_story_list", locals: { iteration: nil, stories: @icebox, list_type: "icebox_ul", move: 1, iteration_id: 0  }

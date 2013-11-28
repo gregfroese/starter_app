@@ -11,6 +11,9 @@ class Project < ActiveRecord::Base
     def current
       where("current = true").first
     end
+    def manageable
+      where("iterations.id != 0 and current = false" )
+    end
   end
 
   private

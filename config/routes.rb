@@ -8,6 +8,7 @@ StarterApp::Application.routes.draw do
       post "sortorder"
       post "resetsortorder"
       get "manage"
+      get "stories_per_iteration"
     end
     resources :stories do
       collection do
