@@ -89,7 +89,10 @@
 
       <div class="actions">
         <p>
-          <%= check_box_tag :include_in_current_iteration %> Include in current iteration?
+          Iteration
+          <br />
+          <%= f.select "iteration_id", options_from_collection_for_select(@project.iterations, "id", "name") %>
+
           <p />
           <%= f.submit "Save Story", { class: 'pure-button' } %>
         <p>

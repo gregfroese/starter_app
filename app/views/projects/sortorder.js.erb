@@ -1,0 +1,6 @@
+<% the_view = render partial: 'projects/total_values', locals: {iteration: @iteration} %>
+$(".iteration_<%= @iteration.id %>_totals").html("<%= escape_javascript(the_view) %>");
+
+// this is stupid but required to make sure both sides of the drag / drop are updated when moving stories to new iterations
+<% the_view = render partial: 'projects/total_values', locals: {iteration: @previous_iteration} %>
+$(".iteration_<%= @previous_iteration.id %>_totals").html("<%= escape_javascript(the_view) %>");

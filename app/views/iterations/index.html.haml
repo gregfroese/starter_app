@@ -12,14 +12,6 @@
     %th # Stories
     %th Action
   %tbody
-    %tr
-      %td Icebox
-      %td
-      %td
-      %td
-      %td= link_to @project.stories.icebox.size, project_iteration_path(@project, Iteration.new(id: 0))
-      %td
-
     - @project.iterations.each do |iteration|
       %tr
         %td= iteration.name

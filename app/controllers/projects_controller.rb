@@ -14,9 +14,9 @@ class ProjectsController < ApplicationController
 		@project = Project.new(project_params)
     @project.user = current_user
 		@project.save!
+    iteration = Iteration.create(project: @project, icebox: true, name: "Icebox")
     iteration = Iteration.create(project: @project, current: true, name: "Default")
 		redirect_to projects_url
-
 	end
 
 	def show
@@ -29,18 +29,23 @@ class ProjectsController < ApplicationController
     @business_value = 0
     @complexity_value = 0
 
-    iteration_id = params[:iteration_id]
+    @iteration = Iteration.find params[:iteration_id]
 		position = 1
-		params["story"].each do |id|
-			story = Story.find id
-			story.position = position
-      story.iteration_id = iteration_id
-			story.save
-			position = position + 1
-      @business_value += story.business_value
-      @complexity_value += story.complexity_value
-		end
-		render :nothing => true
+    if !params["story"].blank?
+  		params["story"].each do |id|
+  			story = Story.find id
+        @previous_iteration ||= Iteration.find story.iteration_id
+  			story.position = position
+        story.iteration_id = @iteration.id
+  			story.save
+  			position = position + 1
+        @business_value += story.business_value
+        @complexity_value += story.complexity_value
+  		end
+    end
+
+    # this is just here so the js doesn't bomb when an iteration gets emptied out
+    @previous_iteration ||= Iteration.new(id: 0, name: "Nothing")
 	end
 
   def resetsortorder
@@ -58,8 +63,8 @@ class ProjectsController < ApplicationController
   end	
 
   def manage
-  	@iteration = @project.iterations.current.stories
-    @icebox = @project.stories.icebox
+  	@current = @project.iterations.current
+    @icebox = @project.iterations.icebox
   end
 
   def stories_per_iteration

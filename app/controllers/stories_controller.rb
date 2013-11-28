@@ -19,8 +19,11 @@ class StoriesController < ApplicationController
     @story = Story.new(story_params)
     @story.user_id = current_user.id
 
-    if params[:include_in_current_iteration] == "1"
-      @story.iteration = @project.iterations.current
+    puts "========= seting iteration id to: " + @project.iterations.icebox.id.to_s
+    @story.iteration_id = @project.iterations.icebox.id 
+    if !params[:iteration_id].blank?
+      puts "========= seting iteration id to: " + params[:iteration_id].to_s
+      @story.iteration_id = params[:iteration_id]
     end
 
     if @story.save
@@ -45,7 +48,7 @@ class StoriesController < ApplicationController
 
   def icebox
     @project = Project.find(params[:project_id])
-    @stories = @project.stories.icebox
+    @stories = @project.iterations.icebox.stories
   end
 
   def addtoiteration

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131115212347) do
+ActiveRecord::Schema.define(version: 20131128043416) do
 
   create_table "assignments", force: true do |t|
     t.integer  "user_id"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20131115212347) do
     t.date     "start_date"
     t.date     "end_date"
     t.string   "name"
+    t.boolean  "icebox",     default: false
   end
 
   create_table "projects", force: true do |t|

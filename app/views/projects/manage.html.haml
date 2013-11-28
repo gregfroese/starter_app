@@ -6,15 +6,13 @@
     = hidden_field_tag :project_id, @project.id
 
     %div.story-container
-      %p= @project.iterations.current.name + " (current)"
-      = render partial: "manage_story_list", locals: { iteration: @project.iterations.current, stories: @iteration, list_type: "iteration_ul", move: 1, iteration_id: @project.iterations.current.id}
+      %p= @current.name + " (current)"
+      = render partial: "manage_story_list", locals: { iteration: @current, stories: @current.stories, list_type: "iteration_ul", move: 1, iteration_id: @current.id}
 
   %div.pure-u-1-2.manage-story-list
-    - iterations = [Iteration.new(id: 0, name: "Icebox")]
-    - iterations += @project.iterations.manageable
     = form_tag(stories_per_iteration_project_path, {remote: true, method: :get})
-    = select_tag "iteration_id", options_from_collection_for_select(iterations, "id", "name")
+    = select_tag "iteration_id", options_from_collection_for_select(@project.iterations.manageable, "id", "name")
     = submit_tag "Switch Iteration"
     %div.story-container
       %div.story-container-right-side
-        = render partial: "manage_story_list", locals: { iteration: nil, stories: @icebox, list_type: "icebox_ul", move: 1, iteration_id: 0  }
+        = render partial: "manage_story_list", locals: { iteration: @icebox, stories: @icebox.stories, list_type: "icebox_ul", move: 1, iteration_id: @icebox.id  }

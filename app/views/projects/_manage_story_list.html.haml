@@ -1,9 +1,5 @@
 %div{class: "iteration_#{iteration_id}_totals"}
-  BV:
-  = @total_values[:business_value]
-  \/
-  CV:
-  = @total_values[:complexity_value]
+  = render partial: "total_values", locals: {iteration: iteration}
 
 %ul.sortme.story-list.ui-sortable.connected-sortable{id: list_type, iteration: iteration_id}
   - stories.each do |story|
